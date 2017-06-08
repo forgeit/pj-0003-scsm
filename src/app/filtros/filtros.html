@@ -16,6 +16,11 @@
 				<select class="form-control text-filtros" ng-options="marca.id as marca.nome for marca in vm.marcas" ng-model="vm.filtro.marca">
 				</select>
 			</div>
+			<div class="col-md-12">
+				<label class="label-filtros">Revenda:</label>
+				<select class="form-control text-filtros" ng-options="revenda.id as revenda.nome for revenda in vm.revendas" ng-model="vm.filtro.revenda">
+				</select>
+			</div>
 			<div class="col-md-6">
 				<label class="label-filtros">Valor Min:</label>
 				<input type="text" name="filtrar" placeholder="Filtrar" class="form-control text-filtros">
@@ -23,12 +28,6 @@
 			<div class="col-md-6">
 				<label class="label-filtros">Valor Max:</label>
 				<input type="text" name="filtrar" placeholder="Filtrar" class="form-control text-filtros">
-			</div>
-			<div class="col-md-12">
-				<label class="label-filtros">Revenda:</label>
-				<select class="form-control text-filtros">
-					<option>Todas</option>
-				</select>
 			</div>
 			<div class="col-md-12">
 				<br/>
