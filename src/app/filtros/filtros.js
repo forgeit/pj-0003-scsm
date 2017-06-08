@@ -53,13 +53,16 @@
 		}
 
 		function buscarMotos() {
+			vm.carregando = true;
 			motoDS.listar().then(success).catch(error);
 
 			function error(response) {
+				vm.carregando = false;
 				vm.motos = [];
 			} 
 
 			function success(response) {
+				vm.carregando = false;
 				if (response.data.exec) {
 					vm.motos = response.data.data;
 				} else {
@@ -86,13 +89,16 @@
 		}
 
 		function filtrar() {
+			vm.carregando = true;
 			motoDS.filtrar(vm.filtro).then(success).catch(error);
 
 			function error(response) {
+				vm.carregando = false;
 				vm.motos = [];
 			} 
 
 			function success(response) {
+				vm.carregando = false;
 				if (response.data.exec) {
 					vm.motos = response.data.data;
 				} else {

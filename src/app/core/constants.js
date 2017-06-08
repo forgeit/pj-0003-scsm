@@ -4,7 +4,7 @@
 	var core = angular.module('app');
 
 	var configuracaoREST = {
-		url: 'http://localhost/motoscs/server/'
+		url: 'http://10.2.0.43/motoscs/server/'
 	};
 
 	core.constant('configuracaoREST', configuracaoREST);
