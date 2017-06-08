@@ -10,6 +10,7 @@
 		'app.filtros', 
 		'app.login', 
 		'app.cliente', 
+		'app.moto', 
 		'ngRoute', 
 		'angular-jwt',	
 		'app.produto']);

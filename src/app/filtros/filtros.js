@@ -13,13 +13,26 @@
 
 		var CARREGANDO = { id: undefined, nome: 'Carregando'}
 		var ERRO       = { id: undefined, nome: 'Erro ao carregar'};
+		var MINIMO     = 1980;
 		var SELECIONE  = { id: undefined, nome: 'Selecione'};
 		
+		vm.anos     = [CARREGANDO];
+		vm.filtrar  = filtrar;
 		vm.marcas   = [CARREGANDO];
 		vm.revendas = [CARREGANDO];
 
+		buscarAnos();
 		buscarMarcas();
 		buscarRevendas();
+
+		function buscarAnos() {
+			var corrente = new Date().getFullYear();
+			vm.anos = [SELECIONE];
+
+			for (var inicio = corrente; inicio >= MINIMO; inicio--) {
+				vm.anos.push({id: inicio, nome: inicio});
+			}
+		}
 
 		function buscarMarcas() {
 			filtrosDS.marcas().then(success).catch(error);
@@ -53,6 +66,10 @@
 					vm.revendas = [ERRO];
 				}
 			} 
+		}
+
+		function filtrar() {
+			console.log(vm.filtro);
 		}
 		
 		

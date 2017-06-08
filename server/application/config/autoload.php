@@ -134,5 +134,6 @@ $autoload['language'] = array();
 */
 $autoload['model'] = array(
 	'MarcaModel',
-	'RevendaModel'
+	'RevendaModel',
+	'MotoModel'
 );

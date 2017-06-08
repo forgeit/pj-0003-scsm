@@ -1,15 +1,10 @@
-<div class="left-sidebar">
+<div class="left-sidebar panel-filtros">
 	<h2>Filtros</h2>
 	<div class="panel-group category-products" id="accordian">
 		<div class="row">
 			<div class="col-md-12">
-				<label class="label-filtros">Meus Filtros:</label>
-				<select class="form-control text-filtros">
-				</select>
-			</div>
-			<div class="col-md-12">
 				<label class="label-filtros">Pesquisar:</label>
-				<input type="text" name="filtrar" placeholder="Filtrar" class="form-control text-filtros">
+				<input type="text" name="filtrar" placeholder="Filtrar" class="form-control text-filtros" ng-model="vm.filtro.query">
 			</div>
 			<div class="col-md-12">
 				<label class="label-filtros">Marcas:</label>
@@ -22,12 +17,22 @@
 				</select>
 			</div>
 			<div class="col-md-6">
-				<label class="label-filtros">Valor Min:</label>
-				<input type="text" name="filtrar" placeholder="Filtrar" class="form-control text-filtros">
+				<label class="label-filtros">Valor Min (R$):</label>
+				<input type="text" name="filtrar" placeholder="Filtrar" class="form-control text-filtros" ng-model="vm.filtro.valorMin">
 			</div>
 			<div class="col-md-6">
-				<label class="label-filtros">Valor Max:</label>
-				<input type="text" name="filtrar" placeholder="Filtrar" class="form-control text-filtros">
+				<label class="label-filtros">Valor Max (R$):</label>
+				<input type="text" name="filtrar" placeholder="Filtrar" class="form-control text-filtros" ng-model="vm.filtro.valorMax">
+			</div>
+			<div class="col-md-6">
+				<label class="label-filtros">Ano Inicial:</label>
+				<select class="form-control text-filtros" ng-options="ano.id as ano.nome for ano in vm.anos" ng-model="vm.filtro.anoInicial">
+				</select>
+			</div>
+			<div class="col-md-6">
+				<label class="label-filtros">Ano Final:</label>
+				<select class="form-control text-filtros" ng-options="ano.id as ano.nome for ano in vm.anos" ng-model="vm.filtro.anoFinal">
+				</select>
 			</div>
 			<div class="col-md-12">
 				<br/>
