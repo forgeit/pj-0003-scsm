@@ -1,0 +1,95 @@
+.btn-carrinho {
+	color: white; 
+	width: 25px; 
+	height: 25px; 
+	background-color: #FE980F; 
+	border: 0px;
+}
+
+.btn-finalizar {
+	color: white; 
+	background-color: #FE980F; 
+	border: 0px;
+	padding: 8px;
+	width: 150px;
+}
+
+.btn-usuario {
+	color: white; 
+	background-color: #FE980F; 
+	height: 6em;
+}
+
+.btn-carrinho-disabled {
+	color: white; 
+	width: 25px; 
+	height: 25px; 
+	background-color: #FE980F; 
+	border: 0px;
+	cursor: not-allowed;
+}
+
+.input-carrinho {
+	border: 1px solid #FE980F; 
+	width: 35px; 
+	height: 25px;
+	color: #FE980F;
+	font-weight: bold;
+}
+
+.categoria-atual {
+	background-color: #FE980F;
+	font-weight: bold;
+}
+
+.categoria-atual a {
+	color: white !important;
+}
+
+.previa {
+	font-weight: bold;
+	color: #696763;
+	font-family: 'Roboto', sans-serif;
+    font-size: 0.8em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.previa-header {
+	background-color: #FE980F;
+	font-weight: bold;
+	color: white;
+}
+
+.previa-panel {
+	padding-bottom: 20px;
+}
+
+.btn-limpar-filtros {
+	color: white; 
+	background-color: #FE980F; 
+	border: 0px;
+	width: 150px;
+	padding: 8px;
+}
+
+.text-filtros {
+	border-radius: 0px;
+	color: #B2B2B2;
+	border: 0;
+	background-color: #F0F0E9;
+	box-shadow: none;
+	font-family: 'roboto';
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.text-filtros:focus {
+	border: 0;
+	box-shadow: none;
+}
+
+.label-filtros {
+	color: #FE980F;
+	text-transform: uppercase;
+}

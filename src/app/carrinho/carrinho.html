@@ -1,0 +1,59 @@
+<section id="cart_items">
+	<div class="container">
+		<div class="breadcrumbs">
+			<ol class="breadcrumb">
+				<li><a href="index.html">Home</a></li>
+				<li class="active">Carrinho</li>
+			</ol>
+		</div>
+		<div class="table-responsive cart_info">
+			<table class="table table-condensed" style="margin-bottom: 0px;">
+				<thead>
+					<tr class="cart_menu">
+						<td class="image">Produto</td>
+						<td class="description"></td>
+						<td class="price text-center">Valor</td>
+						<td class="quantity text-center">Quantidade</td>
+						<td class="total text-center">Total</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-show="vm.carrinho.length === 0">
+						<td colspan="5" class="text-center">
+							Não possui itens.
+						</td>
+					</tr>
+					<tr ng-repeat="carrinho in vm.carrinho" ng-show="vm.carrinho.length > 0">
+						<td class="cart_product">
+							<img ng-src="{{ carrinho.imagem }}" alt="" style="width: 50px; height: 45px;" />
+						</td>
+						<td class="cart_description">
+							<h4><a href="">{{ carrinho.produto }}</a></h4>
+						</td>
+						<td class="cart_price text-center">
+							<p>{{ carrinho.valorUnitario | currency }}</p>
+						</td>
+						<td class="cart_quantity text-center">
+							<div class="cart_quantity_button">
+								<button ng-click="vm.removerCarrinho(carrinho);" ng-class="carrinho.quantidade == 0 ? 'btn-carrinho-disabled' : 'btn-carrinho'"><i class="fa fa-minus"></i></button>
+								<input type="text" class="input-carrinho text-center" ng-model="carrinho.quantidade">
+								<button class="btn-carrinho" ng-click="vm.adicionarCarrinho(carrinho);"><i class="fa fa-plus"></i></button>
+							</div>
+						</td>
+						<td class="cart_total text-center">
+							<p class="cart_total_price">{{ carrinho.valor | currency }}</p>
+						</td>
+					</tr>
+					<tr ng-show="vm.carrinho.length > 0" class="cart_menu">
+						<td colspan="4" class="text-right description" style="font-size: 20px;">
+							Valor Total:
+						</td>
+						<td colspan="1" style="font-size: 20px;" class="text-center">
+							{{ vm.valorTotal | currency }}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,52 @@
+<div class="features_items" ng-if="vm.produtos.length > 0">
+	<h2 class="title text-center">Produtos</h2>
+	<div class="col-sm-4" ng-repeat="produto in vm.produtos" >
+		<div class="product-image-wrapper">
+			<div class="single-products">
+				<div class="productinfo text-center">
+					<img ng-src="{{ produto.imagem }}" alt="" style="width: 200px; height: 180px;" />
+					<h2>{{ produto.valor | currency }}</h2>
+					<p> {{ produto.nome }} </p>
+					<a href="#">
+						<button ng-click="vm.removerCarrinho(produto);" ng-class="produto.quantidade == 0 ? 'btn-carrinho-disabled' : 'btn-carrinho'"><i class="fa fa-minus"></i></button>
+						<input type="text" class="input-carrinho text-center" ng-model="produto.quantidade">
+						<button class="btn-carrinho" ng-click="vm.adicionarCarrinho(produto);"><i class="fa fa-plus"></i></button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-sm-12" >
+		<div class="product-image-wrapper">
+			<div class="single-products">
+				<div class="productinfo text-center">
+					<a href="index.html" class="btn-limpar-filtros">Limpar Filtros</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="features_items" ng-if="vm.produtos.length == 0">
+	<h2 class="title text-center">Produtos</h2>
+	<div class="col-sm-12" >
+		<div class="product-image-wrapper">
+			<div class="single-products">
+				<div class="productinfo text-center">
+					Não possui produtos para a categoria filtrada.
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-sm-12" >
+		<div class="product-image-wrapper">
+			<div class="single-products">
+				<div class="productinfo text-center">
+					<a href="index.html" class="btn-limpar-filtros">Limpar Filtros</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
