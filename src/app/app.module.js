@@ -7,7 +7,7 @@
 		'app.auth', 
 		'app.home', 
 		'app.carrinho', 
-		'app.secoes', 
+		'app.filtros', 
 		'app.login', 
 		'app.cliente', 
 		'ngRoute', 

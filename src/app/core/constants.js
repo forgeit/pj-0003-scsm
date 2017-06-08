@@ -4,7 +4,7 @@
 	var core = angular.module('app');
 
 	var configuracaoREST = {
-		url: 'http://localhost/mercado-digital/server/'
+		url: 'http://localhost/motoscs/server/'
 	};
 
 	core.constant('configuracaoREST', configuracaoREST);
