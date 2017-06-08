@@ -93,3 +93,15 @@
 	color: #FE980F;
 	text-transform: uppercase;
 }
+
+.tabela-filtros tr td {
+	font-family: 'Roboto', sans-serif;
+	color: #666;
+}
+
+.tabela-filtros tr td:first-child {
+	font-weight: bold;
+	color: #FE980F;
+	text-align: right;
+	padding-right: 5px;
+}

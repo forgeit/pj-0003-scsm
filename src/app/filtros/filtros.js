@@ -99,11 +99,35 @@
 
 			function success(response) {
 				vm.carregando = false;
+				filtrarExibicao();
 				if (response.data.exec) {
 					vm.motos = response.data.data;
 				} else {
 					vm.motos = [];
 				}
+			}
+		}
+
+		function filtrarExibicao() {
+			if (vm.filtro) {
+				vm.filtroExibicao = {};
+
+				if (vm.filtro.marca) {
+					vm.marcas.forEach(function (marca) {
+						if (marca.id == vm.filtro.marca) {
+							vm.filtroExibicao.marca = marca.nome;
+						}
+					});
+				}
+
+				if (vm.filtro.anoInicial && vm.filtro.anoFinal) {
+					vm.filtroExibicao.ano = "De " + vm.filtro.anoInicial + " até " + vm.filtro.anoFinal;
+				} else if (vm.filtro.anoInicial){
+					vm.filtroExibicao.ano = "Maior ou igual a " + vm.filtro.anoInicial;
+				} else if (vm.filtro.anoFinal) {
+					vm.filtroExibicao.ano = "Menor ou igual a " + vm.filtro.anoFinal;
+				}
+
 			}
 		}
 		
