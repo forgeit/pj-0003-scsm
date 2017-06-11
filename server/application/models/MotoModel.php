@@ -6,6 +6,28 @@ class MotoModel extends MY_Model {
 		$this->table = 'moto';
 	}
 
+    function buscarTodosRevendaNativo() {
+        $sql = "select 
+                m.nome as nome,
+                m.imagem as imagem,
+                r.nome as revenda,
+                ma.nome as marca,
+                m.ano,
+                m.valor,
+                m.observacoes
+                from moto m
+                join marca ma on ma.id = m.id_marca
+                join revenda r on r.id = m.id_revenda ";
+
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        } else {
+            return null;
+        }
+    }
+
 	function buscarTodosNativo($filtros) {
 		$sql = "select 
                 m.nome as nome,
@@ -19,7 +41,14 @@ class MotoModel extends MY_Model {
                 join marca ma on ma.id = m.id_marca
                 join revenda r on r.id = m.id_revenda ";
 
-        if ($filtros) {
+        if (isset($filtros->anoInicial) ||
+            isset($filtros->anoFinal) ||
+            isset($filtros->marca) || 
+            isset($filtros->revenda) ||
+            isset($filtros->valorMin) ||
+            isset($filtros->valorMax)
+            ) {
+
             $sql .= " WHERE ";
             $params = array();
 

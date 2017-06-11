@@ -120,6 +120,14 @@
 					});
 				}
 
+				if (vm.filtro.revenda) {
+					vm.revendas.forEach(function (revenda) {
+						if (revenda.id == vm.filtro.revenda) {
+							vm.filtroExibicao.revenda = revenda.nome;
+						}
+					});
+				}
+
 				if (vm.filtro.anoInicial && vm.filtro.anoFinal) {
 					vm.filtroExibicao.ano = "De " + vm.filtro.anoInicial + " até " + vm.filtro.anoFinal;
 				} else if (vm.filtro.anoInicial){
@@ -127,6 +135,16 @@
 				} else if (vm.filtro.anoFinal) {
 					vm.filtroExibicao.ano = "Menor ou igual a " + vm.filtro.anoFinal;
 				}
+
+				if (vm.filtro.valorMin && vm.filtro.valorMax) {
+					vm.filtroExibicao.ano = "De R$" + vm.filtro.valorMin + " até R$" + vm.filtro.valorMax;
+				} else if (vm.filtro.valorMin){
+					vm.filtroExibicao.ano = "Maior ou igual a R$" + vm.filtro.valorMin;
+				} else if (vm.filtro.valorMax) {
+					vm.filtroExibicao.ano = "Menor ou igual a R$" + vm.filtro.valorMax;
+				}
+
+
 
 			}
 		}

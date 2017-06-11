@@ -13,17 +13,21 @@
 						<td>Revenda:</td>
 						<td>{{vm.filtroExibicao.revenda}}</td>
 					</tr>
-					<tr ng-show="vm.filtroExibicao.valorInicial">
+					<tr ng-show="vm.filtroExibicao.valorMin">
 						<td>Valor Inicial:</td>
-						<td>{{vm.filtroExibicao.valorInicial}}</td>
+						<td>{{vm.filtroExibicao.valorMin}}</td>
 					</tr>
-					<tr ng-show="vm.filtroExibicao.valorFinal">
+					<tr ng-show="vm.filtroExibicao.valorMax">
 						<td>Valor Final:</td>
-						<td>{{vm.filtroExibicao.valorFinal}}</td>
+						<td>{{vm.filtroExibicao.valorMax}}</td>
 					</tr>
 					<tr ng-show="vm.filtroExibicao.ano">
 						<td>Ano:</td>
 						<td>{{vm.filtroExibicao.ano}}</td>
+					</tr>
+					<tr ng-show="vm.filtroExibicao.revenda">
+						<td>Revenda:</td>
+						<td>{{vm.filtroExibicao.revenda}}</td>
 					</tr>
 				</table>
 			</div>

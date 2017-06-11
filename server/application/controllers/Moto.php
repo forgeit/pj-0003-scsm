@@ -11,4 +11,11 @@ class Moto extends MY_Controller {
 		$exec = count($retorno) > 0;
 		print_r($this->criarRetorno($exec, $retorno));
 	}
+
+	public function buscarTodosPorRevenda() {
+		$data = $this->security->xss_clean($this->input->raw_input_stream);
+		$retorno = $this->MotoModel->buscarTodosRevendaNativo();
+		$exec = count($retorno) > 0;
+		print_r($this->criarRetorno($exec, $retorno));
+	}
 }

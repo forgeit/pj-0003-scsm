@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	var core = angular.module('app');
+	var core = angular.module('painel');
 
 	var configuracaoREST = {
 		url: 'http://localhost/motoscs/server/'
