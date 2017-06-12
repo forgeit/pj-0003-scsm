@@ -7,10 +7,16 @@
 		.run(appRun)
 		.config(routes);
 
-	appRun.$inject = ['$rootScope', '$location', '$route'];
+	appRun.$inject = ['$rootScope', '$location', '$route', 'toastr'];
 	routes.$inject = ['$routeProvider', '$locationProvider'];
 
-	function appRun($rootScope, $location, $route) {
+	function appRun($rootScope, $location, $route, toastr) {
+		toastr.options.timeOut = 3000;
+		toastr.options.progressBar = true;
+		toastr.options.closeButton = true;
+        toastr.options.positionClass = 'toast-bottom-right';
+        toastr.options.preventDuplicates = true;
+
 		setRouteEvents();
 
 		function routeChangeError() {

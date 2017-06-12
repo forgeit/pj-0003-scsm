@@ -8,6 +8,7 @@ class MotoModel extends MY_Model {
 
     function buscarTodosRevendaNativo() {
         $sql = "select 
+                m.id as id,
                 m.nome as nome,
                 m.imagem as imagem,
                 r.nome as revenda,

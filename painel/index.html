@@ -8,7 +8,8 @@
     <title>Painel - SCS Motos</title>
     <base href="/motoscs/painel/">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="src/app/layout/">
+    <link rel="stylesheet" type="text/css" href="src/app/layout/style.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/toastr/toastr.min.css">
 </head>
 
 <body>
@@ -29,13 +30,16 @@
     <script type="text/javascript" src="vendor/angular-datatables/dist/angular-datatables.js"></script>
     <script type="text/javascript" src="vendor/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js"></script>
 
+    <script type="text/javascript" src="../bower_components/angular-input-masks/angular-input-masks-standalone.js"></script>
+    <script type="text/javascript" src="../bower_components/angular-base64-upload/dist/angular-base64-upload.min.js"></script>
+
     <script type="text/javascript" src="src/app/app.module.js"></script>
 
     <script type="text/javascript" src="src/app/core/core.module.js"></script>
     <script type="text/javascript" src="src/app/core/constants.js"></script>
     <script type="text/javascript" src="src/app/core/config.route.js"></script>
     <script type="text/javascript" src="src/app/core/remove-accents.js"></script>
-
+    <script type="text/javascript" src="src/app/core/format-number.js"></script>
 
     <script type="text/javascript" src="src/app/layout/layout.module.js"></script>
     <script type="text/javascript" src="src/app/layout/menu.directive.js"></script>
@@ -50,6 +54,7 @@
     <script type="text/javascript" src="src/app/moto/moto.route.js"></script>
     <script type="text/javascript" src="src/app/moto/moto.data.js"></script>
     <script type="text/javascript" src="src/app/moto/moto-lista.js"></script>
+    <script type="text/javascript" src="src/app/moto/moto.js"></script>
 
 
 </body>

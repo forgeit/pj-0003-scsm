@@ -61,6 +61,12 @@ create table moto
 	foreign key (id_marca) references marca (id)
 );
 
+alter table moto add column img_aux_01 longtext;
+alter table moto add column img_aux_02 longtext;
+alter table moto add column img_aux_03 longtext;
+alter table moto add column img_aux_04 longtext;
+alter table moto modify imagem longtext;
+
 delete from moto;
 insert into moto 
 (nome, imagem, id_revenda, id_marca, ano, valor, observacoes)

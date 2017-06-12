@@ -20,7 +20,7 @@
 				controller: 'Moto',
 				controllerAs: 'vm',
 			})
-			.when('/atualizar-moto/:id', {
+			.when('/registrar-moto/:id', {
 				templateUrl: 'src/app/moto/registrar-moto.html',
 				controller: 'Moto',
 				controllerAs: 'vm',

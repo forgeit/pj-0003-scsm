@@ -1,0 +1,80 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">
+			Cadastrar/Atualizar Motos
+		</h3>
+	</div>
+	<div class="panel-body">
+		<form novalidate name="formulario" ng-submit="vm.moto.id ? vm.atualizar(formulario) : vm.salvar(formulario)">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="nome">Nome *</label>
+						<input name="nome" type="text" class="form-control" id="nome" placeholder="Informe o nome" required ng-model="vm.moto.nome">
+					</div>
+				</div>	
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="valor">Valor *</label>
+						<input name="valor" type="text" class="form-control" id="valor" placeholder="Informe o valor" required ng-model="vm.moto.valor" ui-money-mask="2">
+					</div>
+				</div>	
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="ano">Ano *</label>
+						<select class="form-control text-filtros" ng-options="ano.id as ano.nome for ano in vm.anos" ng-model="vm.moto.ano" required>
+						</select>
+					</div>
+				</div>	
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="marca">Marca *</label>
+						<select class="form-control text-filtros" ng-options="marca.id as marca.nome for marca in vm.marcas" ng-model="vm.moto.id_marca">
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label for="observacoes">Observações</label>
+						<textarea id="observacoes" class="form-control" rows="10" placeholder="Observações referente"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<label for="imagem">Imagem Principal</label>
+				  	<input id="imagem" type="file" ng-model="vm.moto.imagem" base-sixty-four-input required>
+				</div>
+			</div>
+			<div class="row" style="padding-top: 10px;">
+				<div class="col-md-4">
+					<label for="img_aux_01">Imagem 01</label>
+				  	<input id="img_aux_01" type="file" ng-model="vm.moto.img_aux_01" base-sixty-four-input>
+				</div>
+				<div class="col-md-4">
+					<label for="img_aux_02">Imagem 02</label>
+				  	<input id="img_aux_02" type="file" ng-model="vm.moto.img_aux_02" base-sixty-four-input>
+				</div>
+			</div>
+			<div class="row" style="padding-top: 10px;">
+				<div class="col-md-4">
+					<label for="img_aux_03">Imagem 03</label>
+				  	<input id="img_aux_03" type="file" ng-model="vm.moto.img_aux_03" base-sixty-four-input>
+				</div>
+				<div class="col-md-4">
+					<label for="img_aux_04">Imagem 04</label>
+				  	<input id="img_aux_04" type="file" ng-model="vm.moto.img_aux_04" base-sixty-four-input>
+				</div>
+			</div>
+			<div class="row" style="padding-top: 10px;">
+				<div class="col-md-4">
+					<button type="submit" class="btn btn-primary" ng-disabled="formulario.$invalid">Salvar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
