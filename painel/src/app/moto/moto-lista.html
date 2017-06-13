@@ -15,8 +15,8 @@
 			<div class="col-md-2" ng-repeat="moto in vm.motos">
 				<div class="thumbnail">
 					<img src="{{ moto.imagem }}" class="img-preview">
-					<div class="caption">
-						<h4>{{ moto.nome }}</h4>
+					<div class="caption text-center">
+						<p class="text-center"><b>{{ moto.nome }}</b></p>
 						<p>
 							<a href="registrar-moto/{{ moto.id }}" class="btn btn-primary" role="button">Editar</a> 
 							<a href="#" class="btn btn-danger" role="button" ng-click="vm.remover(moto.id)">Remover</a>

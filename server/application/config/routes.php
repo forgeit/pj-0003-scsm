@@ -54,3 +54,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['moto/buscar/(:id)'] = 'moto/buscar/$1';
+$route['moto/remover/(:id)'] = 'moto/remover/$1';

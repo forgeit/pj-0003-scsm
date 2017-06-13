@@ -74,11 +74,16 @@
 			}
 
 			function error(response) {
-				console.log(response);
+				toastr['error']('Erro ao registrar a moto.');
 			}
 
-			function success() {
-				console.log(response);
+			function success(response) {
+				if (response.data.exec) {
+					$location.path('moto');
+					toastr['success']('Sucesso ao registrar a moto.');
+				} else {
+					toastr['error']('Erro ao registrar a moto.');
+				}
 			}
 		}
 

@@ -31,7 +31,7 @@ class Moto extends MY_Controller {
 	public function buscarTodos() {
 		$data = $this->security->xss_clean($this->input->raw_input_stream);
 		$filtros = json_decode($data);
-		sleep(1);// Apenas para teste local
+		// sleep(1);// Apenas para teste local
 		$retorno = $this->MotoModel->buscarTodosNativo($filtros);
 		$exec = count($retorno) > 0;
 		print_r($this->criarRetorno($exec, $retorno));
@@ -64,41 +64,41 @@ class Moto extends MY_Controller {
 				print_r($this->criarRetorno(false, null, 'Imagem principal é inválida'));
 			}
 
-			if (!$this->validarTipoImagem($moto->img_aux_01)) {
+			if (isset($moto->img_aux_01) && $moto->img_aux_01 && !$this->validarTipoImagem($moto->img_aux_01)) {
 				print_r($this->criarRetorno(false, null, 'Imagem 01 é inválida'));
 			}
 
-			if (!$this->validarTipoImagem($moto->img_aux_02)) {
+			if (isset($moto->img_aux_02) && !$this->validarTipoImagem($moto->img_aux_02)) {
 				print_r($this->criarRetorno(false, null, 'Imagem 02 é inválida'));
 			}
 
-			if (!$this->validarTipoImagem($moto->img_aux_03)) {
+			if (isset($moto->img_aux_03) &&  !$this->validarTipoImagem($moto->img_aux_03)) {
 				print_r($this->criarRetorno(false, null, 'Imagem 03 é inválida'));
 			}
 
-			if (!$this->validarTipoImagem($moto->img_aux_04)) {
+			if (isset($moto->img_aux_04) &&  !$this->validarTipoImagem($moto->img_aux_04)) {
 				print_r($this->criarRetorno(false, null, 'Imagem 04 é inválida'));
 			}
 
 			$moto->imagem = 'data:' . $moto->imagem->filetype . ';base64,' . $moto->imagem->base64;
 
-			if ($moto->img_aux_01) {
+			if (isset($moto->img_aux_01)) {
 				$moto->img_aux_01 = 'data:' . $moto->img_aux_01->filetype . ';base64,' . $moto->img_aux_01->base64;
 			}
 
-			if ($moto->img_aux_02) {
+			if (isset($moto->img_aux_02)) {
 				$moto->img_aux_02 = 'data:' . $moto->img_aux_02->filetype . ';base64,' . $moto->img_aux_02->base64;
 			}
 
-			if ($moto->img_aux_03) {
+			if (isset($moto->img_aux_03)) {
 				$moto->img_aux_03 = 'data:' . $moto->img_aux_03->filetype . ';base64,' . $moto->img_aux_03->base64;
 			}
 
-			if ($moto->img_aux_04) {
+			if (isset($moto->img_aux_04)) {
 				$moto->img_aux_04 = 'data:' . $moto->img_aux_04->filetype . ';base64,' . $moto->img_aux_04->base64;
 			}
 
-			$retorno = $moto->id ? $this->MotoModel->atualizar($moto->id, $moto) : $this->MotoModel->inserir($moto);
+			$retorno = isset($moto->id) ? $this->MotoModel->atualizar($moto->id, $moto) : $this->MotoModel->inserir($moto);
 
 			if ($retorno) {
 				print_r($this->criarRetorno(true, null, 'Sucesso ao registrar.'));
@@ -109,6 +109,16 @@ class Moto extends MY_Controller {
 			print_r($this->criarRetorno(false, null, 'Verifique se os dados obrigatórios foram informados.'));
 		}
 
+	}
+
+	public function remover() {
+		$retorno = $this->MotoModel->excluir($this->uri->segment(3));
+
+		if ($retorno) {
+			print_r($this->criarRetorno(true, null, 'Sucesso ao remover.'));
+		} else {
+			print_r($this->criarRetorno(false, null, 'Erro ao remover.'));
+		}
 	}
 
 	private function validarTipoImagem($imagem) {

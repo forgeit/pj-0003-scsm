@@ -12,6 +12,7 @@
 			buscar: buscar,
 			listar: listar,
 			marcas: marcas,
+			remover: remover,
 			salvar: salvar
 		};
 
@@ -27,6 +28,10 @@
 
 		function marcas() {
 			return $http.get(configuracaoREST.url + 'marca/buscarTodos');
+		}
+
+		function remover(id) {
+			return $http.get(configuracaoREST.url + 'moto/remover/' + id);
 		}
 
 		function salvar(data) {
