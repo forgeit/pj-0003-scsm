@@ -3,6 +3,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Moto extends MY_Controller {
 
+	public function buscar() {
+		$retorno = $this->MotoModel->buscarRevendaNativo($this->uri->segment(3));
+		$exec = count($retorno) > 0;
+
+		if ($retorno) {
+			$retorno['imagem'] = $this->convertStringToFileObject($retorno['imagem']);
+			$retorno['img_aux_01'] = $this->convertStringToFileObject($retorno['img_aux_01']);
+			$retorno['img_aux_02'] = $this->convertStringToFileObject($retorno['img_aux_02']);
+			$retorno['img_aux_03'] = $this->convertStringToFileObject($retorno['img_aux_03']);
+			$retorno['img_aux_04'] = $this->convertStringToFileObject($retorno['img_aux_04']);
+		}
+
+		print_r($this->criarRetorno($exec, $retorno));
+	}
+
+	function convertStringToFileObject($string) {
+
+		$array = explode(',', $string);
+
+		return $string ? array (
+			'filetype' => str_replace(';base64', '', str_replace('data:', '', $array[0])),
+			'base64' => $array[1]
+		) : $string;
+	}
+
 	public function buscarTodos() {
 		$data = $this->security->xss_clean($this->input->raw_input_stream);
 		$filtros = json_decode($data);
@@ -62,18 +87,20 @@ class Moto extends MY_Controller {
 			}
 
 			if ($moto->img_aux_02) {
-				$moto->img_aux_02 = $moto->img_aux_02->base64;
+				$moto->img_aux_02 = 'data:' . $moto->img_aux_02->filetype . ';base64,' . $moto->img_aux_02->base64;
 			}
 
 			if ($moto->img_aux_03) {
-				$moto->img_aux_03 = $moto->img_aux_03->base64;
+				$moto->img_aux_03 = 'data:' . $moto->img_aux_03->filetype . ';base64,' . $moto->img_aux_03->base64;
 			}
 
 			if ($moto->img_aux_04) {
-				$moto->img_aux_04 = $moto->img_aux_04->base64;
+				$moto->img_aux_04 = 'data:' . $moto->img_aux_04->filetype . ';base64,' . $moto->img_aux_04->base64;
 			}
 
-			if ($this->MotoModel->inserir($moto)) {
+			$retorno = $moto->id ? $this->MotoModel->atualizar($moto->id, $moto) : $this->MotoModel->inserir($moto);
+
+			if ($retorno) {
 				print_r($this->criarRetorno(true, null, 'Sucesso ao registrar.'));
 			} else {
 				print_r($this->criarRetorno(false, null, 'Erro ao registrar.'));

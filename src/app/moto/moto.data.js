@@ -9,11 +9,16 @@
 
 	function dataservice($http, $location, $q, configuracaoREST) {
 		var service = {
+			buscar: buscar,
 			filtrar: filtrar,
 			listar: listar
 		};
 
 		return service;
+
+		function buscar(id) {
+			return $http.get(configuracaoREST.url + 'moto/buscar/' + id);
+		}
 
 		function filtrar(filtros) {
 			return $http.post(configuracaoREST.url + 'moto/buscarTodos', filtros);

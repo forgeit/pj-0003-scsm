@@ -5,9 +5,9 @@
 		.module('painel.moto')
 		.controller('Moto', Moto);
 
-	Moto.$inject = ['motoDS'];
+	Moto.$inject = ['motoDS', '$location', '$routeParams'];
 
-	function Moto(motoDS) {
+	function Moto(motoDS, $location, $routeParams) {
 		var vm = this;
 		var CARREGANDO = { id: undefined, nome: 'Carregando'}
 		var ERRO       = { id: undefined, nome: 'Erro ao carregar'};
@@ -17,15 +17,35 @@
 		vm.anos     = [CARREGANDO];
 		vm.salvar = salvar;
 
+		buscar();
 		buscarAnos();
 		buscarMarcas();
+
+		function buscar() {
+			if ($routeParams.id) {
+				motoDS.buscar($routeParams.id).then(success).catch(error);
+			}
+
+			function error() {
+				toastr['error']('Moto não encontrada.');
+				$location.path('moto');
+			}
+
+			function success(response) {
+				if (response.data.exec) {
+					vm.moto = response.data.data;
+				} else {
+					toastr['error']('Moto não encontrada.');
+					$location.path('moto');	
+				}
+			}
+		}
 
 		function buscarAnos() {
 			var corrente = new Date().getFullYear();
 			vm.anos = [SELECIONE];
-
 			for (var inicio = corrente; inicio >= MINIMO; inicio--) {
-				vm.anos.push({id: inicio, nome: inicio});
+				vm.anos.push({id: inicio.toString(), nome: inicio});
 			}
 		}
 

@@ -6,6 +6,21 @@ class MotoModel extends MY_Model {
 		$this->table = 'moto';
 	}
 
+    function buscarRevendaNativo($id) {
+        $sql = "select 
+                *
+                from moto m
+                WHERE m.id = ?";
+
+        $query = $this->db->query($sql, array($id));
+
+        if ($query->num_rows() > 0) {
+            return $query->row_array();
+        } else {
+            return null;
+        }
+    }
+
     function buscarTodosRevendaNativo() {
         $sql = "select 
                 m.id as id,
