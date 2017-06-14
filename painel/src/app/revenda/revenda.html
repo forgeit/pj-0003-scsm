@@ -1,0 +1,106 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">
+			Cadastrar/Atualizar Motos
+		</h3>
+	</div>
+	<div class="panel-body">
+		<form novalidate name="formulario" ng-submit="vm.salvar(formulario)">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="nome">Nome *</label>
+						<input name="nome" type="text" class="form-control" id="nome" placeholder="Informe o nome" ng-model="vm.revenda.nome" required>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="email">Email *</label>
+						<input name="email" type="email" class="form-control" id="email" placeholder="Informe o email" ng-model="vm.revenda.email">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="telefone">Telefone</label>
+						<input name="telefoone" type="text" class="form-control" id="telefone" placeholder="Informe o telefone" ng-model="vm.revenda.telefone">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="cidade">Cidade</label>
+						<select name="cidade" class="form-control" id="cidade" ng-model="vm.revenda.cidade" ng-options="cidade.id as cidade.nome for cidade in vm.cidades">
+						</select>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="bairro">Bairro</label>
+						<input name="bairro" type="text" class="form-control" id="bairro" placeholder="Informe o bairro" ng-model="vm.revenda.bairro">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="endereco">Endereço</label>
+						<input name="endereco" type="text" class="form-control" id="endereco" placeholder="Informe o endereço" ng-model="vm.revenda.endereco">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Site">Site</label>
+						<input name="site" type="url" class="form-control" id="site" placeholder="Informe o site" ng-model="vm.revenda.site">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="facebook">Facebook</label>
+						<input name="facebook" type="url" class="form-control" id="facebook" placeholder="Informe o facebook" ng-model="vm.revenda.facebook">
+					</div>
+				</div>
+
+				<div class="col-md-2">
+					<label>Logo</label>
+					<label style="width: 100%;" for="imagem" class="btn btn-primary">Selecionar Imagem</label>
+					<input id="imagem" name="imagem" type="file" ng-model="vm.revenda.imagem" required base-sixty-four-input style="display: none;">
+				</div>
+			</div>
+
+			<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+				<div class="col-md-4">
+					<button type="submit" class="btn btn-primary" ng-disabled="formulario.$invalid">Atualizar</button>
+					<a href="#" class="btn btn-primary">Voltar</a>
+				</div>
+			</div>
+		</form>
+
+		<div class="panel panel-default" ng-if="vm.revenda.imagem.filetype">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					Visualizador de Imagens
+				</h3>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-2">
+						<div class="thumbnail">
+							<img class="img-preview" ng-src="data:{{ vm.revenda.imagem.filetype}};base64,{{ vm.revenda.imagem.base64 }}">
+							<div class="caption">
+								<p><button type="button" class="btn btn-danger" style="width: 100%;" role="button" ng-click="vm.remover('imagem')">Remover</button></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

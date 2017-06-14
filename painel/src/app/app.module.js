@@ -5,6 +5,7 @@
 		'painel.core',
 		'painel.layout',
 		'painel.moto',
+		'painel.revenda',
 		'painel.home']);
 
 })();
