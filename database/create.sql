@@ -39,6 +39,8 @@ create table revenda
 	imagem text
 );
 
+alter table revenda modify imagem longtext;
+
 insert into revenda
 (nome, email, login, senha)
 values 

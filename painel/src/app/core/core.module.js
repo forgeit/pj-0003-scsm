@@ -4,6 +4,7 @@
 
 	angular.module('painel.core', [
 		'ngRoute', 
+		'angular-loading-bar',
 		'angular-jwt',
 		'datatables', 
 		'naif.base64',

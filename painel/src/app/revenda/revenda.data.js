@@ -9,13 +9,18 @@
 
 	function dataservice($http, $location, $q, configuracaoREST) {
 		var service = {
-			buscar: buscar
+			buscar: buscar,
+			salvar: salvar
 		};
 
 		return service;
 
 		function buscar(id) {
 			return $http.get(configuracaoREST.url + 'revenda/buscar');
+		}
+
+		function salvar(dados) {
+			return $http.post(configuracaoREST.url + 'revenda/atualizar', dados);
 		}
 	}
 })();

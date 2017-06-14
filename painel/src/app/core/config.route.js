@@ -5,9 +5,11 @@
 	angular
 		.module('painel')
 		.run(appRun)
+		.config(loading)
 		.config(routes);
 
 	appRun.$inject = ['$rootScope', '$location', '$route', 'toastr'];
+	loading.$inject = ['cfpLoadingBarProvider'];
 	routes.$inject = ['$routeProvider', '$locationProvider'];
 
 	function appRun($rootScope, $location, $route, toastr) {
@@ -37,6 +39,11 @@
 			$rootScope.$on('$routeChangeStart', routeChangeStart);
 			$rootScope.$on('$routeChangeSuccess', routeChangeSuccess);	
 	   	}
+	}
+
+	function loading(cfpLoadingBarProvider) {
+        cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
+        cfpLoadingBarProvider.spinnerTemplate = '<div id="loader-wrapper"><h4>Carregando</h4></div>';
 	}
 
 	function routes($routeProvider, $locationProvider) {
