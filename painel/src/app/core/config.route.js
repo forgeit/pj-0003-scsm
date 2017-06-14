@@ -8,11 +8,11 @@
 		.config(loading)
 		.config(routes);
 
-	appRun.$inject = ['$rootScope', '$location', '$route', 'toastr'];
+	appRun.$inject = ['$rootScope', '$location', '$route', 'toastr', 'AuthToken'];
 	loading.$inject = ['cfpLoadingBarProvider'];
 	routes.$inject = ['$routeProvider', '$locationProvider'];
 
-	function appRun($rootScope, $location, $route, toastr) {
+	function appRun($rootScope, $location, $route, toastr, AuthToken) {
 		toastr.options.timeOut = 3000;
 		toastr.options.progressBar = true;
 		toastr.options.closeButton = true;
@@ -26,7 +26,13 @@
 	   	}
 
 	   	function routeChangeStart(event, next, current) {
-	   		// console.log('Route Change Start');
+	   		if (!next.notSecured) {
+	   			if (!AuthToken.ler()) {
+	   				$rootScope.$evalAsync(function () {
+	   					$location.path('/login');
+	   				});
+	   			}
+	   		}
 	   	}
 
 	   	function routeChangeSuccess(event, current) {

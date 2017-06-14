@@ -9,6 +9,8 @@
 		'datatables', 
 		'naif.base64',
 		'ui.utils.masks',
+		'ngStorage',
+		'core.auth',
 		'datatables.bootstrap']);
 
 })();
