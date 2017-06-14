@@ -3,13 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MY_Controller extends CI_Controller {
 
+	protected $revendaAtual = 0;
+
 	public function __construct() {
 		parent::__construct();	
 
 		$seguro = false;
 
 		foreach ($this->rotasSeguras() as $key => $value) {
-			if ($this->uri->uri_string == $value || (0 === strpos($this->uri->uri_string, $value)))  {
+			if ($this->uri->uri_string == $value)  {
 				$seguro = true;
 			}
 		}
@@ -33,6 +35,8 @@ class MY_Controller extends CI_Controller {
 						if ($diff > $retorno->ttl) {
 							header('HTTP/1.1 401 Unauthorized', true, 401);
 							die();
+						} else {
+							$this->revendaAtual = $retorno->id;
 						}
 					}
 				} catch(Exception $ex) {

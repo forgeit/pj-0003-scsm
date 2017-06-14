@@ -21,7 +21,7 @@ class MotoModel extends MY_Model {
         }
     }
 
-    function buscarTodosRevendaNativo() {
+    function buscarTodosRevendaNativo($id) {
         $sql = "select 
                 m.id as id,
                 m.nome as nome,
@@ -33,9 +33,9 @@ class MotoModel extends MY_Model {
                 m.observacoes
                 from moto m
                 join marca ma on ma.id = m.id_marca
-                join revenda r on r.id = m.id_revenda ";
+                join revenda r on r.id = m.id_revenda where r.id = ?";
 
-        $query = $this->db->query($sql);
+        $query = $this->db->query($sql, array($id));
 
         if ($query->num_rows() > 0) {
             return $query->result_array();

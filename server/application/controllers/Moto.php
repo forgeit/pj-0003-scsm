@@ -39,7 +39,7 @@ class Moto extends MY_Controller {
 
 	public function buscarTodosPorRevenda() {
 		$data = $this->security->xss_clean($this->input->raw_input_stream);
-		$retorno = $this->MotoModel->buscarTodosRevendaNativo();
+		$retorno = $this->MotoModel->buscarTodosRevendaNativo($this->revendaAtual);
 		$exec = count($retorno) > 0;
 		print_r($this->criarRetorno($exec, $retorno));
 	}
@@ -48,7 +48,7 @@ class Moto extends MY_Controller {
 		$data = $this->security->xss_clean($this->input->raw_input_stream);
 		$moto = json_decode($data);
 
-		$moto->id_revenda = 1; //Remover, apenas para testes.
+		$moto->id_revenda = $this->revendaAtual; //Remover, apenas para testes.
 		
 		$formularioValido = false;
 

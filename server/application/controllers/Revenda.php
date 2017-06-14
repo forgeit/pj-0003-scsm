@@ -4,8 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Revenda extends MY_Controller {
 
 	public function buscar() {
-		sleep(2);
-		$retorno = $this->RevendaModel->buscarPorId(1);
+		$retorno = $this->RevendaModel->buscarPorId($this->revendaAtual);
 		$retorno['imagem'] = $this->convertStringToFileObject($retorno['imagem']);
 		$exec = count($retorno) > 0;
 		print_r($this->criarRetorno($exec, $retorno));
@@ -37,7 +36,7 @@ class Revenda extends MY_Controller {
 
 			$revenda->imagem = 'data:' . $revenda->imagem->filetype . ';base64,' . $revenda->imagem->base64;
 
-			$retorno = $this->RevendaModel->atualizar(1, $revenda);
+			$retorno = $this->RevendaModel->atualizar($this->revendaAtual, $revenda);
 
 			if ($retorno) {
 				print_r($this->criarRetorno(true, null, 'Sucesso ao atualizar.'));

@@ -6,9 +6,9 @@
 		.module('painel.layout')
 		.controller('Menu', Menu);
 
-	Menu.$inject = ['$rootScope', 'AuthToken', 'jwtHelper'];
+	Menu.$inject = ['$rootScope', 'AuthToken', 'jwtHelper', '$location'];
 
-	function Menu($rootScope, AuthToken, jwtHelper) {
+	function Menu($rootScope, AuthToken, jwtHelper, $location) {
 		var vm = this;
 
 		vm.isLogged = isLogged;
@@ -21,8 +21,6 @@
 				var payload = jwtHelper.decodeToken(AuthToken.ler());
 				$rootScope.usuarioLogado = {};
 				$rootScope.usuarioLogado.nome = payload.nome;
-				$rootScope.usuarioLogado.cargo = payload.cargo;
-				$rootScope.usuarioLogado.imagem = payload.imagem;
 			}
 		}
 
@@ -32,7 +30,7 @@
 
 		function sair() {
 			AuthToken.remover();
-			controllerUtils.$location.path('/login');
+			$location.path('/login');
 		}
 	}
 
