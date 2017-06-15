@@ -4,7 +4,7 @@
 	var core = angular.module('painel');
 
 	var configuracaoREST = {
-		url: 'http://localhost/motoscs/server/'
+		url: window.location.origin + '/server/'
 	};
 
 	core.constant('configuracaoREST', configuracaoREST);
