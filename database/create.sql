@@ -68,12 +68,3 @@ alter table moto add column img_aux_02 longtext;
 alter table moto add column img_aux_03 longtext;
 alter table moto add column img_aux_04 longtext;
 alter table moto modify imagem longtext;
-
-delete from moto;
-insert into moto 
-(nome, imagem, id_revenda, id_marca, ano, valor, observacoes)
-values 
-('CG 125', 'server/application/views/motos/1.jpg', 1, 5, 2007, 3500, 'Moto em perfeito estado.'),
-('Factor 125', 'server/application/views/motos/2.jpg', 1, 11, 2009, 4500, 'Moto em perfeito estado.'),
-('Twister 250', 'server/application/views/motos/3.jpg', 1, 5, 2009, 6500, 'Moto em perfeito estado.'),
-('Biz 100', 'server/application/views/motos/4.jpg', 1, 5, 2005, 2500, 'Moto em perfeito estado.');
