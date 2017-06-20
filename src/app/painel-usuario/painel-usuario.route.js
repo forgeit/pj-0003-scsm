@@ -11,7 +11,7 @@
 	function routes($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/minha-conta', {
-				templateUrl: 'src/app/painel-usuario/painel-usuario.html?v=1',
+				templateUrl: 'src/app/painel-usuario/painel-usuario.html?v=2',
 				controller: 'PainelUsuario',
 				controllerAs: 'vm',
 			});

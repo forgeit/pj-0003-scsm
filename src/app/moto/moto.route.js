@@ -11,7 +11,7 @@
 	function routes($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/detalhe/moto/:id', {
-				templateUrl: 'src/app/moto/detalhe.html?v=1',
+				templateUrl: 'src/app/moto/detalhe.html?v=2',
 				controller: 'Detalhe',
 				controllerAs: 'vm'
 			});
