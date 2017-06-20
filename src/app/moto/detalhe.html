@@ -4,20 +4,40 @@
 			<div class="col-sm-3">
 				<div class="left-sidebar">
 					<h2>Motos Semelhantes</h2>
-					<div class="panel-group category-products" id="accordian">
+					<!-- motos semelhantes -->
+					<div class="panel-group category-products" id="accordian" ng-if="!vm.carregandoMotosSemelhantes">
 						<div class="row">
-							<div class="col-md-12 text-center grid-esquerda-similares" ng-repeat="moto in vm.motosSemelhantes" ng-click="vm.detalhe(moto.id)">
+							<!-- lista de motos -->
+							<div class="col-md-12 text-center grid-esquerda-similares" ng-repeat="moto in vm.motosSemelhantes" ng-click="vm.detalhe(moto.id)" ng-if="vm.motosSemelhantes.length">
 								<img ng-src="{{ moto.imagem }}" >
 								<br/>
 								<span><b>{{ moto.nome }}/{{moto.ano}}</b></span><br/>
 								<span>{{ moto.valor | currency }}</span>
 							</div>
+							<!-- fim lista de motos -->
+							<!-- não possui moto -->
+							<div class="col-md-12 text-center grid-esquerda-similares" ng-if="!vm.motosSemelhantes.length">
+								Não possui
+							</div>
+							<!-- fim não possui moto -->
 						</div>
 					</div>
+					<!-- motos semelhantes -->
+
+					<!-- loading motos semelhantes -->
+					<div class="panel-group category-products" id="accordian" ng-if="vm.carregandoMotosSemelhantes">
+						<div class="row">
+							<div class="col-md-12 text-center grid-esquerda-similares">
+								Carregando...
+							</div>
+						</div>
+					</div>
+					<!-- fim loading motos semelhantes -->
 				</div>
 			</div>
 			
-			<div class="col-sm-9 padding-right">
+			<!-- detalhe da moto -->
+			<div class="col-sm-9 padding-right" ng-if="!vm.carregandoDados">
 				<div class="product-details">
 					<div class="col-sm-5">
 						<div class="view-product">
@@ -46,7 +66,6 @@
 						</div>
 					</div>
 				</div>
-				
 				<div class="category-tab shop-details-tab">
 					<div class="col-sm-12">
 						<ul class="nav nav-tabs">
@@ -74,9 +93,13 @@
 						</div>
 						
 					</div>
-				</div><!--/category-tab-->
-				
+				</div>
 			</div>
+
+			<div class="col-sm-9 text-center" ng-if="vm.carregandoDados">
+				Carregando...
+			</div>
+			<!-- fim detalhe da moto -->
 		</div>
 	</div>
 </section>

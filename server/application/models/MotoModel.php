@@ -40,16 +40,16 @@ class MotoModel extends MY_Model {
 
     function buscarSemelhantesNativo($id) {
         $sql = "select 
-                id,
-                nome,
-                imagem,
-                ano, 
-                valor,
-                valor_semelhante,
-                valor_semelhante and ano_semelhante as valor_ano_semelhante,
-                valor_semelhante and marca_semelhante as valor_marca_semelhante,
-                ano_semelhante,
-                marca_semelhante
+                    id,
+                    nome,
+                    imagem,
+                    ano, 
+                    valor,
+                    valor_semelhante,
+                    valor_semelhante and ano_semelhante as valor_ano_semelhante,
+                    valor_semelhante and marca_semelhante as valor_marca_semelhante,
+                    ano_semelhante,
+                    marca_semelhante
                 from 
                 (
                     select 
