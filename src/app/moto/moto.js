@@ -6,12 +6,13 @@
 		.module('app.moto')
 		.controller('Moto', Moto);
 
-	Moto.$inject = ['motoDS', '$routeParams', '$localStorage'];
+	Moto.$inject = ['motoDS', '$routeParams', '$localStorage', '$location'];
 
-	function Moto(motoDS, $routeParams, $localStorage) {
+	function Moto(motoDS, $routeParams, $localStorage, $location) {
 		var vm = this;
 		
 		vm.motos = [];
+
 
 		buscarTodos();
 

@@ -18,6 +18,19 @@ class Moto extends MY_Controller {
 		print_r($this->criarRetorno($exec, $retorno));
 	}
 
+	public function buscarSelecionada() {
+		$retorno = $this->MotoModel->buscarSelecionadaNativo($this->uri->segment(3));
+		$exec = count($retorno) > 0;
+		print_r($this->criarRetorno($exec, $retorno));
+	}
+
+	public function buscarSemelhantes() {
+		$retorno = $this->MotoModel->buscarSemelhantesNativo($this->uri->segment(3));
+		$exec = count($retorno) > 0;
+
+		print_r($this->criarRetorno($exec, $retorno));
+	}
+
 	function convertStringToFileObject($string) {
 
 		$array = explode(',', $string);

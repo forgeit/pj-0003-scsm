@@ -21,6 +21,86 @@ class MotoModel extends MY_Model {
         }
     }
 
+    function buscarSelecionadaNativo($id) {
+        $sql = "select 
+                m.*, r.nome as revenda, ma.nome as marca, r.telefone as telefone
+                from moto m
+                join revenda r on r.id = m.id_revenda
+                join marca ma on m.id_marca = ma.id
+                WHERE m.id = ?";
+
+        $query = $this->db->query($sql, array($id));
+
+        if ($query->num_rows() > 0) {
+            return $query->row_array();
+        } else {
+            return null;
+        }
+    }
+
+    function buscarSemelhantesNativo($id) {
+        $sql = "select 
+                id,
+                nome,
+                imagem,
+                ano, 
+                valor,
+                valor_semelhante,
+                valor_semelhante and ano_semelhante as valor_ano_semelhante,
+                valor_semelhante and marca_semelhante as valor_marca_semelhante,
+                ano_semelhante,
+                marca_semelhante
+                from 
+                (
+                    select 
+                        m.id, 
+                        m.nome, 
+                        m.imagem, 
+                        m.ano, 
+                        m.valor,
+                        m.ano >= (d.ano - 3) and m.ano <= (d.ano + 3) as ano_semelhante,
+                        m.valor >= (d.valor - 2000) and m.valor <= (d.valor + 2000) as valor_semelhante,
+                        m.id_marca = d.id_marca as marca_semelhante
+                    from moto m,
+                    (
+                        select 
+                            id,
+                            nome,
+                            id_marca,
+                            ano,
+                            valor
+                        from moto
+                        where id = ?
+                    ) as d
+                    where 
+                    m.id <> d.id
+                    and 
+                    (   
+                        m.id_marca = d.id_marca 
+                        or
+                        (m.ano >= (d.ano - 3) and m.ano <= (d.ano + 3))
+                        or
+                        (m.valor >= (d.valor - 2000) and m.valor <= (d.valor + 2000))
+                        
+                    )
+                ) as todas_semelhantes
+                order by
+                valor_semelhante desc,
+                valor_ano_semelhante desc,
+                valor_marca_semelhante desc,
+                ano_semelhante desc,
+                marca_semelhante desc
+                limit 5";
+
+        $query = $this->db->query($sql, array($id));
+
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        } else {
+            return null;
+        }
+    }
+
     function buscarTodosRevendaNativo($id) {
         $sql = "select 
                 m.id as id,
@@ -46,6 +126,7 @@ class MotoModel extends MY_Model {
 
 	function buscarTodosNativo($filtros) {
 		$sql = "select 
+                m.id as id,
                 m.nome as nome,
                 m.imagem as imagem,
                 r.nome as revenda,

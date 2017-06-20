@@ -10,6 +10,8 @@
 	function dataservice($http, $location, $q, configuracaoREST) {
 		var service = {
 			buscar: buscar,
+			buscarMotosSemelhantes: buscarMotosSemelhantes,
+			buscarMotoSelecionada: buscarMotoSelecionada,
 			filtrar: filtrar,
 			listar: listar
 		};
@@ -18,6 +20,14 @@
 
 		function buscar(id) {
 			return $http.get(configuracaoREST.url + 'moto/buscar/' + id);
+		}
+
+		function buscarMotosSemelhantes(id) {
+			return $http.get(configuracaoREST.url + 'moto/buscarSemelhantes/' + id);
+		}
+
+		function buscarMotoSelecionada(id) {
+			return $http.get(configuracaoREST.url + 'moto/buscarSelecionada/' + id);	
 		}
 
 		function filtrar(filtros) {

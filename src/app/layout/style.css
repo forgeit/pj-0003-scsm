@@ -105,3 +105,20 @@
 	text-align: right;
 	padding-right: 5px;
 }
+
+.grid-esquerda-similares {
+	padding-bottom: 5px;
+	cursor: pointer;
+}
+
+.grid-esquerda-similares > img {
+	width: auto !important;
+	height: 8em !important;
+}
+
+.img-min-preview {
+	width: auto;
+	height: 3.5em !important;
+	margin: 5px;
+	border: 1px solid #FE980F;
+}

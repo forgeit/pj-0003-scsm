@@ -6,9 +6,9 @@
 		.module('app.filtros')
 		.controller('Filtros', Filtros);
 
-	Filtros.$inject = ['filtrosDS', '$routeParams', '$localStorage', 'motoDS'];
+	Filtros.$inject = ['filtrosDS', '$routeParams', '$localStorage', 'motoDS', '$location'];
 
-	function Filtros(filtrosDS, $routeParams, $localStorage, motoDS) {
+	function Filtros(filtrosDS, $routeParams, $localStorage, motoDS, $location) {
 		var vm = this;
 
 		var CARREGANDO = { id: undefined, nome: 'Carregando'}
@@ -17,6 +17,7 @@
 		var SELECIONE  = { id: undefined, nome: 'Selecione'};
 		
 		vm.anos     = [CARREGANDO];
+		vm.detalhe  = detalhe;
 		vm.filtrar  = filtrar;
 		vm.marcas   = [CARREGANDO];
 		vm.revendas = [CARREGANDO];
@@ -86,6 +87,10 @@
 					vm.revendas = [ERRO];
 				}
 			} 
+		}
+
+		function detalhe(id) {
+			$location.path('/detalhe/moto/' + id);
 		}
 
 		function filtrar() {
