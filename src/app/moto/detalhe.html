@@ -1,0 +1,82 @@
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="left-sidebar">
+					<h2>Motos Semelhantes</h2>
+					<div class="panel-group category-products" id="accordian">
+						<div class="row">
+							<div class="col-md-12 text-center grid-esquerda-similares" ng-repeat="moto in vm.motosSemelhantes" ng-click="vm.detalhe(moto.id)">
+								<img ng-src="{{ moto.imagem }}" >
+								<br/>
+								<span><b>{{ moto.nome }}/{{moto.ano}}</b></span><br/>
+								<span>{{ moto.valor | currency }}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-sm-9 padding-right">
+				<div class="product-details">
+					<div class="col-sm-5">
+						<div class="view-product">
+							<img ng-src="{{ vm.moto.imagem }}" />
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<a ng-if="vm.moto.imagem" href="" class="link-img"><img class="img-min-preview" ng-src="{{ vm.moto.imagem }}" ></a>
+								<a ng-if="vm.moto.img_aux_01" href="" class="link-img"><img class="img-min-preview" ng-src="{{ vm.moto.img_aux_01 }}" ></a>
+								<a ng-if="vm.moto.img_aux_02" href="" class="link-img"><img class="img-min-preview" ng-src="{{ vm.moto.img_aux_02 }}" ></a>
+								<a ng-if="vm.moto.img_aux_03" href="" class="link-img"><img class="img-min-preview" ng-src="{{ vm.moto.img_aux_03 }}" ></a>
+								<a ng-if="vm.moto.img_aux_04" href="" class="link-img"><img class="img-min-preview" ng-src="{{ vm.moto.img_aux_04 }}" ></a>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-sm-7">
+						<div class="product-information">
+							<h2>{{ vm.moto.nome }}/{{ vm.moto.ano }}</h2>
+							<span>
+								<span>{{ vm.moto.valor | currency }}</span>
+							</span>
+							<p><b>Marca:</b> {{ vm.moto.marca }}</p>
+							<p><b>Revenda:</b> {{ vm.moto.revenda }}</p>
+							<p><b>Contato:</b> {{ vm.moto.telefone }}</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="category-tab shop-details-tab">
+					<div class="col-sm-12">
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#">Detalhes</a></li>
+							<li><a href="">Revenda</a></li>
+						</ul>
+					</div>
+					<div class="tab-content">
+						<div class="tab-pane fade active in" id="reviews" >
+							<div class="col-sm-12">
+								<p>{{ vm.moto.observacoes }}</p>
+								<p><b>Entre em contato</b></p>
+								
+								<form action="#">
+									<span>
+										<input type="text" placeholder="Informe seu nome"/>
+										<input type="email" placeholder="Informe seu e-mail"/>
+									</span>
+									<textarea name="" ></textarea>
+									<button type="button" class="btn btn-default pull-right">
+										Enviar
+									</button>
+								</form>
+							</div>
+						</div>
+						
+					</div>
+				</div><!--/category-tab-->
+				
+			</div>
+		</div>
+	</div>
+</section>
