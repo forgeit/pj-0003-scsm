@@ -9,7 +9,7 @@
 	function rodape() {
 		var directive = {
 			restrict: 'E',
-			templateUrl: 'src/app/layout/rodape.html?v=2'
+			templateUrl: 'src/app/layout/rodape.html?v=3'
 		};
 
 		return directive;
