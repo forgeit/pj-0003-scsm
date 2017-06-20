@@ -9,7 +9,7 @@
 	function cabecalho() {
 		var directive = {
 			restrict: 'E',
-			templateUrl: 'src/app/layout/cabecalho.html'
+			templateUrl: 'src/app/layout/cabecalho.html?v=1'
 		};
 
 		return directive;

@@ -9,7 +9,7 @@
 	function filtros() {
 		var directive = {
 			restrict: 'E',
-			templateUrl: 'src/app/filtros/filtros.html'
+			templateUrl: 'src/app/filtros/filtros.html?v=1'
 		};
 
 		return directive;
