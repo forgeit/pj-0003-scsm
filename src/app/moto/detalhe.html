@@ -27,8 +27,11 @@
 					<!-- loading motos semelhantes -->
 					<div class="panel-group category-products" id="accordian" ng-if="vm.carregandoMotosSemelhantes">
 						<div class="row">
-							<div class="col-md-12 text-center grid-esquerda-similares">
-								Carregando...
+							<div class="col-md-12 text-center">
+								<h1 style="color: #FE980F;">Carregando...</h1>
+							</div>
+							<div class="col-md-12 text-center">
+								<img src="images/loading.gif" style="width: 20px; height: 20px;">
 							</div>
 						</div>
 					</div>
@@ -97,7 +100,12 @@
 			</div>
 
 			<div class="col-sm-9 text-center" ng-if="vm.carregandoDados">
-				Carregando...
+				<div class="col-md-12 text-center">
+					<h1 style="color: #FE980F;">Carregando...</h1>
+				</div>
+				<div class="col-md-12 text-center">
+					<img src="images/loading.gif" style="width: 50px; height: 50px;">
+				</div>
 			</div>
 			<!-- fim detalhe da moto -->
 		</div>
