@@ -11,7 +11,7 @@
 	function routes($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/buscar-produtos/secao/:idSecao/:nomeSecao/categoria/:idCategoria/:nomeCategoria', {
-				templateUrl: 'src/app/home/home.html?v=32',
+				templateUrl: 'src/app/home/home.html',
 				controller: 'Home',
 				controllerAs: 'vm',
 				titulo: 'Página Inicial',
@@ -30,7 +30,7 @@
 				redirectTo: '/'
 			});
 
-		$locationProvider.html?v=325Mode(true);
+		$locationProvider.html5Mode(true);
 	}
 
 })();

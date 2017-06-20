@@ -9,7 +9,7 @@
 	function produto() {
 		var directive = {
 			restrict: 'E',
-			templateUrl: 'src/app/produto/produto.html?v=32'
+			templateUrl: 'src/app/produto/produto.html'
 		};
 
 		return directive;

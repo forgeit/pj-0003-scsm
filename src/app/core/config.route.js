@@ -36,7 +36,7 @@
 	function routes($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/', {
-				templateUrl: 'src/app/home/home.html?v=32',
+				templateUrl: 'src/app/home/home.html',
 				controller: 'Home',
 				controllerAs: 'vm',
 				titulo: 'Página Inicial',
@@ -55,7 +55,7 @@
 				redirectTo: '/'
 			});
 
-		$locationProvider.html?v=325Mode(true);
+		$locationProvider.html5Mode(true);
 	}
 
 })();

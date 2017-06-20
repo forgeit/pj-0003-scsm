@@ -9,7 +9,7 @@
 	function moto() {
 		var directive = {
 			restrict: 'E',
-			templateUrl: 'src/app/moto/moto.html?v=32'
+			templateUrl: 'src/app/moto/moto.html'
 		};
 
 		return directive;

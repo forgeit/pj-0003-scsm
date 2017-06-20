@@ -11,7 +11,7 @@
 	function routes($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/carrinho', {
-				templateUrl: 'src/app/carrinho/carrinho.html?v=32',
+				templateUrl: 'src/app/carrinho/carrinho.html',
 				controller: 'Carrinho',
 				controllerAs: 'vm',
 			});

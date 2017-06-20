@@ -1,61 +1,30 @@
 (function () {
 
-	'use strict';
+    'use strict';
 
-	angular
-		.module('app')
-		.run(appRun)
-		.config(routes);
+    angular
+        .module('app')
+        .filter('removeAccents', removeAccents);
 
-	appRun.$inject = ['$rootScope', '$location', '$route'];
-	routes.$inject = ['$routeProvider', '$locationProvider'];
+    function removeAccents() {
+        return function (source) {
+            var accent = [
+                /[\300-\306]/g, /[\340-\346]/g, // A, a
+                /[\310-\313]/g, /[\350-\353]/g, // E, e
+                /[\314-\317]/g, /[\354-\357]/g, // I, i
+                /[\322-\330]/g, /[\362-\370]/g, // O, o
+                /[\331-\334]/g, /[\371-\374]/g, // U, u
+                /[\321]/g, /[\361]/g, // N, n
+                /[\307]/g, /[\347]/g, // C, c
+            ],
+            noaccent = ['A','a','E','e','I','i','O','o','U','u','N','n','C','c'];
 
-	function appRun($rootScope, $location, $route) {
-		setRouteEvents();
+            for (var i = 0; i < accent.length; i++){
+                source = source.replace(accent[i], noaccent[i]);
+            }
 
-		function routeChangeError() {
-	   		// console.log('Route Change Error');
-	   	}
-
-	   	function routeChangeStart(event, next, current) {
-	   		// console.log('Route Change Start');
-	   	}
-
-	   	function routeChangeSuccess(event, current) {
-	  //  		$rootScope.cabecalho = current.cabecalho;
-			// $rootScope.titulo = current.titulo;
-	   	}
-
-		function setRouteEvents() {
-	   		$rootScope.$on('$routeChangeError', routeChangeError);
-			$rootScope.$on('$routeChangeStart', routeChangeStart);
-			$rootScope.$on('$routeChangeSuccess', routeChangeSuccess);	
-	   	}
-	}
-
-	function routes($routeProvider, $locationProvider) {
-		$routeProvider
-			.when('/', {
-				templateUrl: 'src/app/home/home.html?v=32',
-				controller: 'Home',
-				controllerAs: 'vm',
-				titulo: 'Página Inicial',
-				cabecalho: {
-					h1: 'Página Inicial',
-					breadcrumbs: [
-						{
-							nome: 'Página Inicial',
-							link: '/',
-							ativo: true
-						}
-					]
-				}
-			})
-			.otherwise({
-				redirectTo: '/'
-			});
-
-		$locationProvider.html?v=325Mode(true);
-	}
+            return source;
+        };
+    } // removeAccents
 
 })();
