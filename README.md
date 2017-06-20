@@ -21,5 +21,3 @@ TODO PAINEL
 * Remover imagens ao editar e cadastrar motos
 * Exibir valores de lucro mensal, anual e total no dashboard.
 * Exibir valores de venda mensal, anual e total no dashboard.
-
-
