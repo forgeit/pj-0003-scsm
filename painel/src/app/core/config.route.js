@@ -55,7 +55,7 @@
 	function routes($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/', {
-				templateUrl: 'src/app/home/home.html',
+				templateUrl: 'src/app/home/home.html?v=1',
 				controller: 'Home',
 				controllerAs: 'vm',
 				titulo: 'Página Inicial',

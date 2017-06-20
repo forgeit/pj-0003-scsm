@@ -9,7 +9,7 @@
 	function btnEditar() {
 		var directive = {
 			restrict: 'E',
-			templateUrl: 'src/app/layout/btn-editar.html'
+			templateUrl: 'src/app/layout/btn-editar.html?v=1'
 		};
 
 		return directive;

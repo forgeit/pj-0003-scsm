@@ -11,7 +11,7 @@
 	function routes($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/meus-dados', {
-				templateUrl: 'src/app/revenda/revenda.html',
+				templateUrl: 'src/app/revenda/revenda.html?v=1',
 				controller: 'Revenda',
 				controllerAs: 'vm',
 			});

@@ -9,7 +9,7 @@
 	function menu() {
 		var directive = {
 			restrict: 'E',
-			templateUrl: 'src/app/layout/menu.html'
+			templateUrl: 'src/app/layout/menu.html?v=1'
 		};
 
 		return directive;
