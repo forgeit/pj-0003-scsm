@@ -20,4 +20,8 @@ TODO PAINEL
 * Adicionar valores ao formulário da moto. (Valor de Venda, Custos com Mecânica, Compra da Moto, Documentos, Outros)
 * Remover imagens ao editar e cadastrar motos
 * Exibir valores de lucro mensal, anual e total no dashboard.
+<<<<<<< HEAD
 * Exibir valores de venda mensal, anual e total no dashboard.
+=======
+* Exibir valores de venda mensal, anual e total no dashboard.
+>>>>>>> parent of e91f848... Novos TODOs
