@@ -71,7 +71,7 @@
 
 		function entrarEmContato(formulario) {
 			if (formulario.$valid) {
-				motoDS.entrarEmContato().then(success).catch(error);
+				motoDS.entrarEmContato(vm.contato).then(success).catch(error);
 			} else {
 				toastr['error']('Informe os dados necessário para entrar em contato.');
 			}

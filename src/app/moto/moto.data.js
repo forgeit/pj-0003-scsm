@@ -32,7 +32,7 @@
 		}
 
 		function entrarEmContato(mensagem) {
-			return $http.post(configuracaoREST.url + 'moto/entrarEmContato', mensagem);
+			return $http.post(configuracaoREST.url + 'mensagem/entrarEmContato', mensagem);
 		}
 
 		function filtrar(filtros) {

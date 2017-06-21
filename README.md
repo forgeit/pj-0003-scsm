@@ -2,7 +2,6 @@ TODO SITE PÚBLICO
 
 * Páginação de motos da página inicial
 * Filtrar por string
-* Registrar contato para moto
 * Limpar Filtros
 * Exibir lista de revendas
 * Exibir lista de motos por revenda
