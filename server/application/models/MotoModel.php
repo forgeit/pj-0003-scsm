@@ -23,7 +23,18 @@ class MotoModel extends MY_Model {
 
     function buscarSelecionadaNativo($id) {
         $sql = "select 
-                m.*, r.nome as revenda, ma.nome as marca, r.telefone as telefone
+                m.*, 
+                r.nome as revenda, 
+                ma.nome as marca, 
+                r.telefone as telefone,
+                r.cidade, 
+                r.bairro,
+                r.endereco,
+                r.email,
+                r.site,
+                r.imagem as revenda_imagem,
+                r.facebook,
+                r.id as revenda_id
                 from moto m
                 join revenda r on r.id = m.id_revenda
                 join marca ma on m.id_marca = ma.id

@@ -97,7 +97,24 @@
 						</div>
 						<div class="tab-pane fade active in" ng-show="vm.abaAtual == vm.REVENDA" >
 							<div class="col-sm-12">
-								Revenda..
+								<a href="listar/motos/revenda/{{ vm.moto.revenda_id }}"><img ng-src="{{ vm.moto.revenda_imagem}}" class="imagem-revenda" /></a>
+								<br/>
+								<h4>{{ vm.moto.revenda }}</h4>
+								<p>
+									<i class="fa fa-map-marker" aria-hidden="true"></i> {{vm.moto.endereco}}, {{ vm.moto.bairro}} - {{ vm.moto.cidade }}
+								</p>
+								<p>
+									<i class="fa fa-envelope" aria-hidden="true"></i>&nbsp; {{ vm.moto.email }}
+								</p>
+								<p>
+									<i class="fa fa-share" aria-hidden="true"></i>&nbsp;<a href="{{ vm.moto.site }}">Site Oficial</a>
+								</p>
+								<p>	
+									<i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;<a href="{{ vm.moto.facebook }}">Página Oficial</a>
+								</p>
+								<p>
+									<i class="fa fa-phone" aria-hidden="true"></i>&nbsp; {{ vm.moto.telefone | brPhoneNumber }}	
+								</p>
 							</div>
 						</div>
 					</div>
