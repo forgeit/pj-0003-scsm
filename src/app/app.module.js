@@ -12,6 +12,7 @@
 		'app.cliente', 
 		'app.moto', 
 		'ngRoute', 
+		'idf.br-filters',
 		'angular-jwt',	
 		'app.produto']);
 
