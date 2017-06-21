@@ -73,12 +73,12 @@
 				<div class="category-tab shop-details-tab">
 					<div class="col-sm-12">
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#">Detalhes</a></li>
-							<li><a href="">Revenda</a></li>
+							<li ng-class="vm.abaAtual == vm.DETALHES ? 'active' : ''" ng-click="vm.trocarAba(vm.DETALHES)"><a href="#">Detalhes</a></li>
+							<li ng-class="vm.abaAtual == vm.REVENDA ? 'active' : ''" ng-click="vm.trocarAba(vm.REVENDA)"><a href="">Revenda</a></li>
 						</ul>
 					</div>
 					<div class="tab-content">
-						<div class="tab-pane fade active in" id="reviews" >
+						<div class="tab-pane fade active in" ng-show="vm.abaAtual == vm.DETALHES" id="reviews">
 							<div class="col-sm-12">
 								<p>{{ vm.moto.observacoes }}</p>
 								<p><b>Entre em contato</b></p>
@@ -95,7 +95,11 @@
 								</form>
 							</div>
 						</div>
-						
+						<div class="tab-pane fade active in" ng-show="vm.abaAtual == vm.REVENDA" >
+							<div class="col-sm-12">
+								Revenda..
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

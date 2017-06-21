@@ -3,11 +3,10 @@ TODO SITE PÚBLICO
 * Páginação de motos da página inicial
 * Filtrar por string
 * Registrar contato para moto
-* Alternar entre abas na exibição da moto 
+* Limpar Filtros
 * Exibir dados da revenda 
 * Exibir lista de revendas
 * Exibir lista de motos por revenda
-* Limpar Filtros
 
 TODO PAINEL
 

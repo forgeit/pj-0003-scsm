@@ -10,13 +10,18 @@
 
 	function Detalhe(motoDS, $routeParams, $localStorage, $location) {
 		var vm = this;
-		
+
+		vm.DETALHES = 1;
+		vm.REVENDA  = 2;
+
+		vm.abaAtual                   = vm.DETALHES;
 		vm.carregandoDados            = true;
 		vm.carregandoMotosSemelhantes = true;
 		vm.detalhe                    = detalhe;
 		vm.motosSemelhantes           = {};
-		vm.trocarImagemPrincipal 	  = trocarImagemPrincipal;
-			
+		vm.trocarAba                  = trocarAba;
+		vm.trocarImagemPrincipal      = trocarImagemPrincipal;
+		
 		buscarMotoSelecionada();
 		buscarMotosSemelhantes();
 
@@ -61,6 +66,10 @@
 					vm.motosSemelhantes = [];
 				}
 			} 
+		}
+
+		function trocarAba(id) {
+			vm.abaAtual = id;
 		}
 
 		function trocarImagemPrincipal(imagem) {
