@@ -2,7 +2,6 @@ TODO SITE PÚBLICO
 
 * Páginação de motos da página inicial
 * Filtrar por string
-* Alternar imagens do exibidor de moto
 * Registrar contato para moto
 * Alternar entre abas na exibição da moto 
 * Exibir dados da revenda 

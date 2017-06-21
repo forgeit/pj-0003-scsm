@@ -15,6 +15,7 @@
 		vm.carregandoMotosSemelhantes = true;
 		vm.detalhe                    = detalhe;
 		vm.motosSemelhantes           = {};
+		vm.trocarImagemPrincipal 	  = trocarImagemPrincipal;
 			
 		buscarMotoSelecionada();
 		buscarMotosSemelhantes();
@@ -36,6 +37,7 @@
 				vm.carregandoDados = false;
 				if (response.data.exec) {
 					vm.moto = response.data.data;
+					trocarImagemPrincipal(response.data.data.imagem);
 				} else {
 					vm.moto = {};
 				}
@@ -59,6 +61,10 @@
 					vm.motosSemelhantes = [];
 				}
 			} 
+		}
+
+		function trocarImagemPrincipal(imagem) {
+			vm.imagemAtual = imagem;
 		}
 	}
 

@@ -42,22 +42,22 @@
 			<!-- detalhe da moto -->
 			<div class="col-sm-9 padding-right" ng-if="!vm.carregandoDados">
 				<div class="product-details">
-					<div class="col-sm-5">
-						<div class="view-product">
-							<img ng-src="{{ vm.moto.imagem }}" />
+					<div class="col-sm-6">
+						<div class="view-product text-center" >
+							<img ng-src="{{ vm.imagemAtual }}" class="imagem-detalhe" />
 						</div>
 						<div class="row">
-							<div class="col-md-12">
-								<a ng-if="vm.moto.imagem" href="" class="link-img"><img class="img-min-preview" ng-src="{{ vm.moto.imagem }}" ></a>
-								<a ng-if="vm.moto.img_aux_01" href="" class="link-img"><img class="img-min-preview" ng-src="{{ vm.moto.img_aux_01 }}" ></a>
-								<a ng-if="vm.moto.img_aux_02" href="" class="link-img"><img class="img-min-preview" ng-src="{{ vm.moto.img_aux_02 }}" ></a>
-								<a ng-if="vm.moto.img_aux_03" href="" class="link-img"><img class="img-min-preview" ng-src="{{ vm.moto.img_aux_03 }}" ></a>
-								<a ng-if="vm.moto.img_aux_04" href="" class="link-img"><img class="img-min-preview" ng-src="{{ vm.moto.img_aux_04 }}" ></a>
+							<div class="col-md-12 text-center">
+								<a ng-click="vm.trocarImagemPrincipal(vm.moto.imagem)" ng-if="vm.moto.imagem" href="" class="link-img"><img class="img-min-preview" ng-src="{{ vm.moto.imagem }}" ></a>
+								<a ng-click="vm.trocarImagemPrincipal(vm.moto.img_aux_01)" ng-if="vm.moto.img_aux_01" href="" class="link-img"><img class="img-min-preview" ng-src="{{ vm.moto.img_aux_01 }}" ></a>
+								<a ng-click="vm.trocarImagemPrincipal(vm.moto.img_aux_02)" ng-if="vm.moto.img_aux_02" href="" class="link-img"><img class="img-min-preview" ng-src="{{ vm.moto.img_aux_02 }}" ></a>
+								<a ng-click="vm.trocarImagemPrincipal(vm.moto.img_aux_03)" ng-if="vm.moto.img_aux_03" href="" class="link-img"><img class="img-min-preview" ng-src="{{ vm.moto.img_aux_03 }}" ></a>
+								<a ng-click="vm.trocarImagemPrincipal(vm.moto.img_aux_04)" ng-if="vm.moto.img_aux_04" href="" class="link-img"><img class="img-min-preview" ng-src="{{ vm.moto.img_aux_04 }}" ></a>
 							</div>
 						</div>
 
 					</div>
-					<div class="col-sm-7">
+					<div class="col-sm-6 text-left">
 						<div class="product-information">
 							<h2>{{ vm.moto.nome }}/{{ vm.moto.ano }}</h2>
 							<span>

@@ -122,3 +122,8 @@
 	margin: 5px;
 	border: 1px solid #FE980F;
 }
+
+.imagem-detalhe {
+	height: 20em !important;
+	width: auto !important;
+}
