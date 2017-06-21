@@ -5,6 +5,7 @@ TODO SITE PÚBLICO
 * Limpar Filtros
 * Exibir lista de revendas
 * Exibir lista de motos por revenda
+* Exibir Loading ao entrar em contato
 
 TODO PAINEL
 

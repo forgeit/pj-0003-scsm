@@ -6,6 +6,7 @@
 		'painel.login',
 		'painel.layout',
 		'painel.moto',
+		'painel.mensagem',
 		'painel.revenda',
 		'painel.home']);
 

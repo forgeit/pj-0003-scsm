@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Mensagem extends MY_Controller {
 
+	public function buscarTotalNaoLidaPorRevenda() {
+		$retorno = $this->MensagemModel->buscarTotalNaoLidaPorRevendaNativo($this->revendaAtual);
+		$exec = count($retorno) > 0;
+		print_r($this->criarRetorno($exec, $retorno));
+	}
+
 	public function entrarEmContato() {
 		$data = $this->security->xss_clean($this->input->raw_input_stream);
 		$mensagem = json_decode($data);
