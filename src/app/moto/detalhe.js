@@ -18,16 +18,13 @@
 		vm.carregandoDados            = true;
 		vm.carregandoMotosSemelhantes = true;
 		vm.detalhe                    = detalhe;
+		vm.entrarEmContato			  = entrarEmContato;
 		vm.motosSemelhantes           = {};
 		vm.trocarAba                  = trocarAba;
 		vm.trocarImagemPrincipal      = trocarImagemPrincipal;
 		
 		buscarMotoSelecionada();
 		buscarMotosSemelhantes();
-
-		function detalhe(id) {
-			$location.path('/detalhe/moto/' + id);
-		}
 
 		function buscarMotoSelecionada() {
 			vm.carregandoDados = true;
@@ -66,6 +63,31 @@
 					vm.motosSemelhantes = [];
 				}
 			} 
+		}
+
+		function detalhe(id) {
+			$location.path('/detalhe/moto/' + id);
+		}
+
+		function entrarEmContato(formulario) {
+			if (formulario.$valid) {
+				motoDS.entrarEmContato().then(success).catch(error);
+			} else {
+				toastr['error']('Informe os dados necessário para entrar em contato.');
+			}
+
+			function error(response) {
+				toastr['error']('Ocorreu um erro ao enviar sua mensagem.');	
+			}
+
+			function success(response) {
+				if (response.data.exec) {
+					toastr['success']('Sua mensagem foi enviada com sucesso.');	
+					delete vm.contato;
+				} else {
+					toastr['error']('Ocorreu um erro ao enviar sua mensagem.');		
+				}
+			}
 		}
 
 		function trocarAba(id) {

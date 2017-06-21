@@ -12,6 +12,7 @@
 			buscar: buscar,
 			buscarMotosSemelhantes: buscarMotosSemelhantes,
 			buscarMotoSelecionada: buscarMotoSelecionada,
+			entrarEmContato: entrarEmContato,
 			filtrar: filtrar,
 			listar: listar
 		};
@@ -28,6 +29,10 @@
 
 		function buscarMotoSelecionada(id) {
 			return $http.get(configuracaoREST.url + 'moto/buscarSelecionada/' + id);	
+		}
+
+		function entrarEmContato(mensagem) {
+			return $http.post(configuracaoREST.url + 'moto/entrarEmContato', mensagem);
 		}
 
 		function filtrar(filtros) {

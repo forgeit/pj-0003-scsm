@@ -68,3 +68,14 @@ alter table moto add column img_aux_02 longtext;
 alter table moto add column img_aux_03 longtext;
 alter table moto add column img_aux_04 longtext;
 alter table moto modify imagem longtext;
+
+create table mensagem
+(
+    id int primary key auto_increment,
+    nome varchar(255) not null,
+    email varchar(255),
+    texto text not null,
+    visualizado boolean default false,
+    id_revenda int not null,
+    foreign key (id_revenda) references revenda (id)
+);

@@ -66,7 +66,7 @@
 							</span>
 							<p><b>Marca:</b> {{ vm.moto.marca }}</p>
 							<p><b>Revenda:</b> {{ vm.moto.revenda }}</p>
-							<p><b>Contato:</b> {{ vm.moto.telefone | brPhoneNumber }}</p>
+							<p ng-if="vm.moto.telefone"><b>Contato:</b> {{ vm.moto.telefone | brPhoneNumber }}</p>
 						</div>
 					</div>
 				</div>
@@ -83,13 +83,14 @@
 								<p>{{ vm.moto.observacoes }}</p>
 								<p><b>Entre em contato</b></p>
 								
-								<form action="#">
+								<form name="formulario" novalidate ng-submit="vm.entrarEmContato(formulario)">
 									<span>
-										<input type="text" placeholder="Informe seu nome"/>
-										<input type="email" placeholder="Informe seu e-mail"/>
+										<input type="hidden" ng-model="vm.contato.revenda" ng-init="vm.contato.revenda = vm.moto.revenda_id">
+										<input type="text" placeholder="Informe seu nome *" ng-model="vm.contato.nome" required />
+										<input type="email" placeholder="Informe seu e-mail" ng-model="vm.contato.email" />
 									</span>
-									<textarea name="" ></textarea>
-									<button type="button" class="btn btn-default pull-right">
+									<textarea placeholder="Faça sua proposta *" ng-model="vm.contato.descricao" required></textarea>
+									<button type="submit" class="btn btn-default pull-right">
 										Enviar
 									</button>
 								</form>
@@ -100,19 +101,19 @@
 								<a href="listar/motos/revenda/{{ vm.moto.revenda_id }}"><img ng-src="{{ vm.moto.revenda_imagem}}" class="imagem-revenda" /></a>
 								<br/>
 								<h4>{{ vm.moto.revenda }}</h4>
-								<p>
+								<p ng-if="vm.moto.endereco && vm.moto.bairro && vm.moto.cidade">
 									<i class="fa fa-map-marker" aria-hidden="true"></i> {{vm.moto.endereco}}, {{ vm.moto.bairro}} - {{ vm.moto.cidade }}
 								</p>
 								<p>
 									<i class="fa fa-envelope" aria-hidden="true"></i>&nbsp; {{ vm.moto.email }}
 								</p>
-								<p>
-									<i class="fa fa-share" aria-hidden="true"></i>&nbsp;<a href="{{ vm.moto.site }}">Site Oficial</a>
+								<p ng-if="vm.moto.site">
+									<i class="fa fa-share" aria-hidden="true"></i>&nbsp;<a target="_" href="{{ vm.moto.site }}">Site Oficial</a>
 								</p>
-								<p>	
-									<i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;<a href="{{ vm.moto.facebook }}">Página Oficial</a>
+								<p ng-if="vm.moto.facebook">	
+									<i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;<a target="_" href="{{ vm.moto.facebook }}">Página Oficial</a>
 								</p>
-								<p>
+								<p ng-if="vm.moto.telefone">
 									<i class="fa fa-phone" aria-hidden="true"></i>&nbsp; {{ vm.moto.telefone | brPhoneNumber }}	
 								</p>
 							</div>
