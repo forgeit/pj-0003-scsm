@@ -77,5 +77,7 @@ create table mensagem
     texto text not null,
     visualizado boolean default false,
     id_revenda int not null,
-    foreign key (id_revenda) references revenda (id)
+    id_moto int not null,
+    foreign key (id_revenda) references revenda (id),
+    foreign key (id_moto) references moto (id)
 );

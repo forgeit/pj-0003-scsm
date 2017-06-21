@@ -85,7 +85,8 @@
 								
 								<form name="formulario" novalidate ng-submit="vm.entrarEmContato(formulario)">
 									<span>
-										<input type="hidden" ng-model="vm.contato.revenda" ng-init="vm.contato.id_revenda = vm.moto.revenda_id">
+										<input type="hidden" ng-model="vm.contato.id_revenda" ng-init="vm.contato.id_revenda = vm.moto.revenda_id">
+										<input type="hidden" ng-model="vm.contato.id_moto" ng-init="vm.contato.id_moto = vm.moto.id">
 										<input type="text" placeholder="Informe seu nome *" ng-model="vm.contato.nome" required />
 										<input type="email" placeholder="Informe seu e-mail" ng-model="vm.contato.email" />
 									</span>

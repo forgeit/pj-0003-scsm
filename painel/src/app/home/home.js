@@ -25,7 +25,7 @@
 
 			function success(response) {
 				if (response.data.exec) {
-					vm.totalNaoLido = response.data.data.total;
+					vm.totalNaoLido = response.data.data.data;
 				} else {
 					vm.totalNaoLido = "Erro";
 				}

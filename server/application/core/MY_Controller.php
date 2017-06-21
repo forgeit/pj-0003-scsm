@@ -61,6 +61,7 @@ class MY_Controller extends CI_Controller {
 		$rotas[] = 'revenda/atualizar';
 		$rotas[] = 'moto/buscarTodosPorRevenda';
 		$rotas[] = 'mensagem/buscarTotalNaoLidaPorRevenda';
+		$rotas[] = 'mensagem/buscarTodosPorRevenda';
 		$rotas[] = 'moto/salvar';
 		$rotas[] = 'moto/buscar';
 
