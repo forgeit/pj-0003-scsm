@@ -36,7 +36,7 @@
 	function routes($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/', {
-				templateUrl: 'src/app/home/home.html?v=2',
+				templateUrl: 'src/app/home/home.html?v=3',
 				controller: 'Home',
 				controllerAs: 'vm',
 				titulo: 'Página Inicial',
