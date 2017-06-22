@@ -16,6 +16,7 @@
 
 		vm.abaAtual                   = vm.DETALHES;
 		vm.carregandoDados            = true;
+		vm.carregandoImagemAtual	  = true;
 		vm.carregandoMotosSemelhantes = true;
 		vm.detalhe                    = detalhe;
 		vm.entrarEmContato			  = entrarEmContato;
@@ -41,6 +42,7 @@
 				if (response.data.exec) {
 					vm.moto = response.data.data;
 					vm.imagemAtual = response.data.data.imagem;
+					vm.carregandoImagemAtual = false;
 					vm.imagens.push('imagem');
 				} else {
 					vm.moto = {};
@@ -98,6 +100,7 @@
 
 		function trocarImagemPrincipal(moto, imagem) {
 			var existe = false;
+			vm.carregandoImagemAtual = true;
 
 			if (vm.imagens.length > 0) {
 				vm.imagens.forEach(function (value, index) {
@@ -111,6 +114,7 @@
 							motoDS.buscarImagem(moto.id, {nome: imagem}).then(success).catch(error);
 						} else {
 							vm.imagemAtual = vm.moto[imagem];
+							vm.carregandoImagemAtual = false;
 						}
 					}
 				});
@@ -127,6 +131,7 @@
 				if (response.data.exec) {
 					vm.moto[imagem] = response.data.data[imagem];
 					vm.imagemAtual = response.data.data[imagem];
+					vm.carregandoImagemAtual = false;
 				} else {
 					toastr['error']('Erro ao carregar a imagem.');		
 				}

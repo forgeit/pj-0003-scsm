@@ -44,8 +44,9 @@
 
 				<div class="product-details">
 					<div class="col-sm-7">
-						<div class="view-product text-center" >
-							<img ng-src="{{ vm.imagemAtual }}" class="imagem-detalhe" />
+						<div class="view-product text-center">
+							<img ng-src="{{ vm.imagemAtual }}" class="imagem-detalhe"/>
+							<img ng-show="vm.carregandoImagemAtual" ng-src="images/loading.gif?v=1" class="text-center" style="position: absolute; top: 7.5em; left: 45%; width: 40px; height: 40px; border: 0px;"/>
 						</div>
 						<div class="row">
 							<div class="col-md-12 text-center">
