@@ -19,6 +19,7 @@
 		vm.carregandoMotosSemelhantes = true;
 		vm.detalhe                    = detalhe;
 		vm.entrarEmContato			  = entrarEmContato;
+		vm.imagens					  = [];
 		vm.motosSemelhantes           = {};
 		vm.trocarAba                  = trocarAba;
 		vm.trocarImagemPrincipal      = trocarImagemPrincipal;
@@ -39,7 +40,8 @@
 				vm.carregandoDados = false;
 				if (response.data.exec) {
 					vm.moto = response.data.data;
-					trocarImagemPrincipal(response.data.data.imagem);
+					vm.imagemAtual = response.data.data.imagem;
+					vm.imagens.push('imagem');
 				} else {
 					vm.moto = {};
 				}
@@ -94,8 +96,41 @@
 			vm.abaAtual = id;
 		}
 
-		function trocarImagemPrincipal(imagem) {
-			vm.imagemAtual = imagem;
+		function trocarImagemPrincipal(moto, imagem) {
+			var existe = false;
+
+			if (vm.imagens.length > 0) {
+				vm.imagens.forEach(function (value, index) {
+					if (value === imagem) {
+						existe = true;
+					}
+
+					if (index == (vm.imagens.length - 1)) {
+						if (!existe) {
+							vm.imagens.push(imagem);
+							motoDS.buscarImagem(moto.id, {nome: imagem}).then(success).catch(error);
+						} else {
+							vm.imagemAtual = vm.moto[imagem];
+						}
+					}
+				});
+			} else {
+				vm.imagens.push(imagem);
+				motoDS.buscarImagem(moto.id, {nome: imagem}).then(success).catch(error);
+			}
+
+			function error(response) {
+				toastr['error']('Erro ao carregar a imagem.');
+			}
+
+			function success(response) {
+				if (response.data.exec) {
+					vm.moto[imagem] = response.data.data[imagem];
+					vm.imagemAtual = response.data.data[imagem];
+				} else {
+					toastr['error']('Erro ao carregar a imagem.');		
+				}
+			}
 		}
 	}
 

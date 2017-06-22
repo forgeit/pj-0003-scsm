@@ -19,7 +19,7 @@ class MensagemModel extends MY_Model {
         }
 	}
 
-	function buscarTodosRevendaNativo($id) {
+	function buscarTodosRevendaNativo($id, $paginacao) {
         $sql = "select 
                 msg.*, 
                 case when msg.visualizado then 'Visualizado' else 'Não Visualizado' end as visualizado, 
@@ -28,7 +28,8 @@ class MensagemModel extends MY_Model {
                 from mensagem msg 
                 join moto m on m.id = msg.id_moto
                 where
-                msg.id_revenda = ?";
+                msg.id_revenda = ?
+                order by msg.visualizado desc, msg.id desc";
 
         $query = $this->db->query($sql, array($id));
 

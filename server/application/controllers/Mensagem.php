@@ -5,7 +5,8 @@ class Mensagem extends MY_Controller {
 
 	public function buscarTodosPorRevenda() {
 		$data = $this->security->xss_clean($this->input->raw_input_stream);
-		$retorno = $this->MensagemModel->buscarTodosRevendaNativo($this->revendaAtual);
+		$paginacao = json_decode($data);
+		$retorno = $this->MensagemModel->buscarTodosRevendaNativo($this->revendaAtual, $paginacao);
 		$exec = count($retorno) > 0;
 		print_r($this->criarRetorno($exec, $retorno));
 	}

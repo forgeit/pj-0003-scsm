@@ -12,9 +12,9 @@
 
 		vm.mensagemList = [];
 
-		buscarMensagens();
+		buscarMensagens(false);
 
-		function buscarMensagens() {
+		function buscarMensagens(tipo) {
 			vm.mensagemList = [];
 			mensagemDS.listar().then(success).catch(error);
 

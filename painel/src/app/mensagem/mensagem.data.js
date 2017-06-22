@@ -25,7 +25,7 @@
 			return $http.get(configuracaoREST.url + 'mensagem/buscarTotalNaoLidaPorRevenda');
 		}
 
-		function listar() {
+		function listar(paginacao) {
 			return $http.get(configuracaoREST.url + 'mensagem/buscarTodosPorRevenda');
 		}
 

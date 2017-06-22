@@ -10,6 +10,7 @@
 	function dataservice($http, $location, $q, configuracaoREST) {
 		var service = {
 			buscar: buscar,
+			buscarImagem: buscarImagem,
 			buscarMotosSemelhantes: buscarMotosSemelhantes,
 			buscarMotoSelecionada: buscarMotoSelecionada,
 			entrarEmContato: entrarEmContato,
@@ -21,6 +22,10 @@
 
 		function buscar(id) {
 			return $http.get(configuracaoREST.url + 'moto/buscar/' + id);
+		}
+
+		function buscarImagem(id, imagem) {
+			return $http.post(configuracaoREST.url + 'moto/buscarImagem/' + id, imagem);
 		}
 
 		function buscarMotosSemelhantes(id) {

@@ -54,6 +54,14 @@ class MY_Controller extends CI_Controller {
 		return json_encode(array('exec' => $exec, 'data' => $data, 'msg' => $msg));
 	} 
 
+	protected function criarStringArquivo($imagem, $altura, $qualidade = 70) {
+		require_once('application/libraries/ImageResize.php');
+		$image = ImageResize::createFromString(base64_decode($imagem->base64));
+		$image->quality_jpg = $qualidade;
+		$image->resizeToHeight($altura);		
+		return 'data:' . $imagem->filetype . ';base64,' . base64_encode($image->__toString());
+	}
+
 	private function rotasSeguras() {
 		$rotas = array();
 

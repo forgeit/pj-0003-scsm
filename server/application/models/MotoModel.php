@@ -21,9 +21,32 @@ class MotoModel extends MY_Model {
         }
     }
 
+    function buscarImagem($id, $imagem) {
+        $sql = "select $imagem from moto where id = ?";
+
+        $query = $this->db->query($sql, array($id));
+
+        if ($query->num_rows() > 0) {
+            return $query->row_array();
+        } else {
+            return null;
+        }
+    }
+
     function buscarSelecionadaNativo($id) {
         $sql = "select 
-                m.*, 
+                m.id, 
+                m.nome, 
+                m.imagem as imagem, 
+                m.id_revenda, 
+                m.id_marca, 
+                m.ano, 
+                m.valor, 
+                m.observacoes, 
+                m.img_aux_01_thumb as img_aux_01, 
+                m.img_aux_02_thumb as img_aux_02, 
+                m.img_aux_03_thumb as img_aux_03, 
+                m.img_aux_04_thumb as img_aux_04, 
                 r.nome as revenda, 
                 ma.nome as marca, 
                 r.telefone as telefone,
@@ -53,7 +76,7 @@ class MotoModel extends MY_Model {
         $sql = "select 
                     id,
                     nome,
-                    imagem,
+                    imagem_home as imagem,
                     ano, 
                     valor,
                     valor_semelhante,
@@ -66,7 +89,7 @@ class MotoModel extends MY_Model {
                     select 
                         m.id, 
                         m.nome, 
-                        m.imagem, 
+                        m.imagem_home, 
                         m.ano, 
                         m.valor,
                         m.ano >= (d.ano - 3) and m.ano <= (d.ano + 3) as ano_semelhante,
@@ -139,7 +162,7 @@ class MotoModel extends MY_Model {
 		$sql = "select 
                 m.id as id,
                 m.nome as nome,
-                m.imagem as imagem,
+                m.imagem_home as imagem,
                 r.nome as revenda,
                 ma.nome as marca,
                 m.ano,

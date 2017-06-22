@@ -18,6 +18,44 @@ class Moto extends MY_Controller {
 		print_r($this->criarRetorno($exec, $retorno));
 	}
 
+	public function buscarImagem() {
+		$data = $this->security->xss_clean($this->input->raw_input_stream);
+		$imagem = json_decode($data);
+
+		$nome = null;
+
+		if (!isset($imagem->nome)) {
+			print_r($this->criarRetorno(false, null));
+			die();
+		}
+
+		if ($imagem->nome == 'img_aux_01') {
+			$nome = $imagem->nome;
+		}
+
+		if ($imagem->nome == 'img_aux_02') {
+			$nome = $imagem->nome;
+		}
+
+		if ($imagem->nome == 'img_aux_03') {
+			$nome = $imagem->nome;
+		}
+
+		if ($imagem->nome == 'img_aux_04') {
+			$nome = $imagem->nome;
+		}
+
+		if ($nome != null) {
+			$retorno = $this->MotoModel->buscarImagem($this->uri->segment(3), $imagem->nome);
+			$exec = count($retorno) > 0;
+		} else {
+			$exec = false;
+			$retorno = null;
+		}
+		
+		print_r($this->criarRetorno($exec, $retorno));
+	}
+
 	public function buscarSelecionada() {
 		$retorno = $this->MotoModel->buscarSelecionadaNativo($this->uri->segment(3));
 		$exec = count($retorno) > 0;
@@ -93,21 +131,26 @@ class Moto extends MY_Controller {
 				print_r($this->criarRetorno(false, null, 'Imagem 04 é inválida'));
 			}
 
+			$moto->imagem_home = $this->criarStringArquivo($moto->imagem, 150, 100);
 			$moto->imagem = 'data:' . $moto->imagem->filetype . ';base64,' . $moto->imagem->base64;
 
 			if (isset($moto->img_aux_01)) {
+				$moto->img_aux_01_thumb = $this->criarStringArquivo($moto->img_aux_01, 50, 100);
 				$moto->img_aux_01 = 'data:' . $moto->img_aux_01->filetype . ';base64,' . $moto->img_aux_01->base64;
 			}
 
 			if (isset($moto->img_aux_02)) {
+				$moto->img_aux_02_thumb = $this->criarStringArquivo($moto->img_aux_02, 50, 100);
 				$moto->img_aux_02 = 'data:' . $moto->img_aux_02->filetype . ';base64,' . $moto->img_aux_02->base64;
 			}
 
 			if (isset($moto->img_aux_03)) {
+				$moto->img_aux_03_thumb = $this->criarStringArquivo($moto->img_aux_03, 50, 100);
 				$moto->img_aux_03 = 'data:' . $moto->img_aux_03->filetype . ';base64,' . $moto->img_aux_03->base64;
 			}
 
 			if (isset($moto->img_aux_04)) {
+				$moto->img_aux_04_thumb = $this->criarStringArquivo($moto->img_aux_04, 50, 100);
 				$moto->img_aux_04 = 'data:' . $moto->img_aux_04->filetype . ';base64,' . $moto->img_aux_04->base64;
 			}
 
