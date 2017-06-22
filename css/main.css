@@ -68,7 +68,7 @@ a#scrollUp i{
 **************************/
 
 .header_top {
-  background: none repeat scroll 0 0 #F0F0E9;
+  background: none repeat scroll 0 0 #434343;
 }
 
 .contactinfo ul li:first-child{
@@ -5065,7 +5065,7 @@ a#scrollUp i{
 **************************/
 
 .header_top {
-  background: none repeat scroll 0 0 #F0F0E9;
+  background: none repeat scroll 0 0 #434343;
 }
 
 .contactinfo ul li:first-child{
@@ -5074,7 +5074,7 @@ a#scrollUp i{
 
 .contactinfo ul li a{
   font-size: 12px;
-  color: #696763;
+  color: white;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -5087,7 +5087,7 @@ a#scrollUp i{
 .social-icons ul li a {
   border: 0 none;
   border-radius: 0;
-  color: #696763;
+  color: white;
   padding:0px;
 }
 
@@ -5343,7 +5343,7 @@ ul.sub-menu {
 **************************/
 
 #footer {
-  background: #F0F0E9;
+  background: #434343;
 }
 
 
@@ -5357,14 +5357,14 @@ ul.sub-menu {
 }
 
 .companyinfo h2 {
-  color: #B4B1AB;
+  color: white;
   font-family: abel;
   font-size: 27px;
   text-transform: uppercase;
 }
 
 .companyinfo h2  span{
-  color:#FE980F;
+  color:white;
 }
 
 .companyinfo p {
@@ -5542,12 +5542,12 @@ ul.sub-menu {
 }
 
 .footer-bottom {
-  background: #D6D6D0;
+  background: #434343;
   padding-top: 10px;
 }
 
 .footer-bottom p {
-  color: #363432;
+  color: white;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   margin-left: 15px;
@@ -7389,7 +7389,7 @@ h2.title {
 }
 
 .btn.btn-primary {
-  background:#FE980F;
+  background:#434343;
   border: 0 none;
   border-radius: 0;
   margin-top: 16px;
