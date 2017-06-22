@@ -76,12 +76,12 @@
 .text-filtros {
 	border-radius: 0px;
 	color: #B2B2B2;
-	border: 0;
+	border: 1px solid #d6d6d6;
 	background-color: #F0F0E9;
 	box-shadow: none;
 	font-family: 'roboto';
     font-size: 12px;
-    font-weight: 300;
+    font-weight: 500;
 }
 
 .text-filtros:focus {
