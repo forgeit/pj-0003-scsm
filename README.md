@@ -1,11 +1,10 @@
 TODO SITE PÚBLICO
 
-* Páginação de motos da página inicial
+* Páginação de motos da página inicial (Complexo)
 * Filtrar por string
 * Limpar Filtros
 * Exibir lista de revendas
 * Exibir lista de motos por revenda
-* Exibir Loading ao entrar em contato
 
 TODO PAINEL
 
@@ -16,3 +15,4 @@ TODO PAINEL
 * Exibir valores de venda mensal, anual e total no dashboard.
 * mascaras no cadastro de revenda 
 * imagem da revenda, otimizar.
+* Log de visitas na moto

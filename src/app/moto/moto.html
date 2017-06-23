@@ -17,7 +17,8 @@
 				<div class="productinfo text-center">
 					<img ng-src="{{ moto.imagem }}" alt="" style="width: auto; height: 150px;" />
 					<h2> {{ moto.nome }}/{{moto.ano}}</h2>
-					<p><b>{{ moto.valor | currency }}</b></p>
+					<p ng-show="moto.valor > 0"><b>{{ moto.valor | currency }}</b></p>
+					<p ng-show="moto.valor == 0"><b>Consultar</b></p>
 				</div>
 			</div>
 		</div>

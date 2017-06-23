@@ -67,6 +67,9 @@ alter table moto add column img_aux_01 longtext;
 alter table moto add column img_aux_02 longtext;
 alter table moto add column img_aux_03 longtext;
 alter table moto add column img_aux_04 longtext;
+alter table moto add column data_cadastro date not null;
+
+
 
 alter table moto modify imagem longtext;
 alter table moto add column imagem_home longtext not null;
@@ -74,6 +77,11 @@ alter table moto add column img_aux_01_thumb longtext not null;
 alter table moto add column img_aux_02_thumb longtext not null;
 alter table moto add column img_aux_03_thumb longtext not null;
 alter table moto add column img_aux_04_thumb longtext not null;
+
+alter table moto modify column img_aux_01_thumb longtext;
+alter table moto modify column img_aux_02_thumb longtext;
+alter table moto modify column img_aux_03_thumb longtext;
+alter table moto modify column img_aux_04_thumb longtext;
 
 
 create table mensagem
@@ -88,3 +96,6 @@ create table mensagem
     foreign key (id_revenda) references revenda (id),
     foreign key (id_moto) references moto (id)
 );
+
+alter table mensagem add column ts_recebido datetime;
+alter table mensagem add column ultima_visualizacao datetime;

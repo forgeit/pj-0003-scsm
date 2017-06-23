@@ -12,7 +12,8 @@
 								<img ng-src="{{ moto.imagem }}" >
 								<br/>
 								<span><b>{{ moto.nome }}/{{moto.ano}}</b></span><br/>
-								<span>{{ moto.valor | currency }}</span>
+								<span ng-show="moto.valor > 0">{{ moto.valor | currency }}</span>
+								<span ng-show="moto.valor == 0">Consultar</span>
 							</div>
 							<!-- fim lista de motos -->
 							<!-- não possui moto -->
@@ -63,7 +64,8 @@
 						<div class="product-information">
 							<h2>{{ vm.moto.nome }}/{{ vm.moto.ano }}</h2>
 							<span>
-								<span>{{ vm.moto.valor | currency }}</span>
+								<span ng-show="vm.moto.valor > 0">{{ vm.moto.valor | currency }}</span>
+								<span ng-show="vm.moto.valor == 0" class="btn btn-primary">Consultar</span>
 							</span>
 							<p><b>Marca:</b> {{ vm.moto.marca }}</p>
 							<p><b>Revenda:</b> {{ vm.moto.revenda }}</p>
@@ -81,7 +83,7 @@
 					<div class="tab-content">
 						<div class="tab-pane fade active in" ng-show="vm.abaAtual == vm.DETALHES" id="reviews">
 							<div class="col-sm-12">
-								<pre>{{ vm.moto.observacoes }}</pre>
+								<pre ng-if="vm.moto.observacoes">{{ vm.moto.observacoes }}</pre>
 								<p><b>Entre em contato</b></p>
 								
 								<form name="formulario" novalidate ng-submit="vm.entrarEmContato(formulario)">
@@ -92,8 +94,8 @@
 										<input type="email" placeholder="Informe seu e-mail" ng-model="vm.contato.email" />
 									</span>
 									<textarea placeholder="Faça sua proposta *" ng-model="vm.contato.texto" required></textarea>
-									<button type="submit" class="btn btn-default pull-right">
-										Enviar
+									<button type="submit" class="btn btn-default pull-right" style="background: #434343">
+										{{ vm.btnEnviar }}
 									</button>
 								</form>
 							</div>

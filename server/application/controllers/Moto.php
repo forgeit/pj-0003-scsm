@@ -13,6 +13,14 @@ class Moto extends MY_Controller {
 			$retorno['img_aux_02'] = $this->convertStringToFileObject($retorno['img_aux_02']);
 			$retorno['img_aux_03'] = $this->convertStringToFileObject($retorno['img_aux_03']);
 			$retorno['img_aux_04'] = $this->convertStringToFileObject($retorno['img_aux_04']);
+
+			unset($retorno['imagem_home']);
+			unset($retorno['img_aux_01_thumb']);
+			unset($retorno['img_aux_02_thumb']);
+			unset($retorno['img_aux_03_thumb']);
+			unset($retorno['img_aux_04_thumb']);
+			unset($retorno['id_revenda']);
+			
 		}
 
 		print_r($this->criarRetorno($exec, $retorno));
@@ -96,8 +104,8 @@ class Moto extends MY_Controller {
 
 	public function salvar() {
 		$data = $this->security->xss_clean($this->input->raw_input_stream);
-		$moto = json_decode($data);
 
+		$moto = json_decode($data);
 		$moto->id_revenda = $this->revendaAtual; //Remover, apenas para testes.
 		
 		$formularioValido = false;
@@ -136,21 +144,37 @@ class Moto extends MY_Controller {
 			if (isset($moto->img_aux_01)) {
 				$moto->img_aux_01_thumb = $this->criarStringArquivo($moto->img_aux_01, 50, 100);
 				$moto->img_aux_01 = 'data:' . $moto->img_aux_01->filetype . ';base64,' . $moto->img_aux_01->base64;
+			} else {
+				$moto->img_aux_01 = null;
+				$moto->img_aux_01_thumb = null;
 			}
 
 			if (isset($moto->img_aux_02)) {
 				$moto->img_aux_02_thumb = $this->criarStringArquivo($moto->img_aux_02, 50, 100);
 				$moto->img_aux_02 = 'data:' . $moto->img_aux_02->filetype . ';base64,' . $moto->img_aux_02->base64;
+			} else {
+				$moto->img_aux_02 = null;
+				$moto->img_aux_02_thumb = null;
 			}
 
 			if (isset($moto->img_aux_03)) {
 				$moto->img_aux_03_thumb = $this->criarStringArquivo($moto->img_aux_03, 50, 100);
 				$moto->img_aux_03 = 'data:' . $moto->img_aux_03->filetype . ';base64,' . $moto->img_aux_03->base64;
+			} else {
+				$moto->img_aux_03 = null;
+				$moto->img_aux_03_thumb = null;
 			}
 
 			if (isset($moto->img_aux_04)) {
 				$moto->img_aux_04_thumb = $this->criarStringArquivo($moto->img_aux_04, 50, 100);
 				$moto->img_aux_04 = 'data:' . $moto->img_aux_04->filetype . ';base64,' . $moto->img_aux_04->base64;
+			} else {
+				$moto->img_aux_04 = null;
+				$moto->img_aux_04_thumb = null;
+			}
+
+			if (!isset($moto->data_cadastro)) {
+				$moto->data_cadastro = date('Y-m-d');
 			}
 
 			$retorno = isset($moto->id) ? $this->MotoModel->atualizar($moto->id, $moto) : $this->MotoModel->inserir($moto);

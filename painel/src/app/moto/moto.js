@@ -16,6 +16,7 @@
 		
 		vm.anos     = [CARREGANDO];
 		vm.salvar = salvar;
+		vm.remover = remover;
 
 		buscar();
 		buscarAnos();
@@ -85,6 +86,10 @@
 					toastr['error']('Erro ao registrar a moto.');
 				}
 			}
+		}
+
+		function remover(imagem) {
+			delete vm.moto[imagem];
 		}
 
 	}

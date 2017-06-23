@@ -28,6 +28,9 @@ class Mensagem extends MY_Controller {
 		$formularioValido = isset($mensagem->id_moto) && strlen(trim($mensagem->id_moto)) > 0 && $formularioValido;
 
 		if ($formularioValido) {
+
+			$mensagem->ts_recebido = date('Y-m-d H:i:s');
+
 			$retorno = $this->MensagemModel->inserir($mensagem);
 
 			if ($retorno) {

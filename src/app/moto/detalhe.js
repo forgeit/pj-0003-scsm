@@ -15,6 +15,7 @@
 		vm.REVENDA  = 2;
 
 		vm.abaAtual                   = vm.DETALHES;
+		vm.btnEnviar				  = "Enviar";
 		vm.carregandoDados            = true;
 		vm.carregandoImagemAtual	  = true;
 		vm.carregandoMotosSemelhantes = true;
@@ -75,16 +76,19 @@
 
 		function entrarEmContato(formulario) {
 			if (formulario.$valid) {
+				vm.btnEnviar = "Aguarde...";
 				motoDS.entrarEmContato(vm.contato).then(success).catch(error);
 			} else {
 				toastr['error']('Informe os dados necessário para entrar em contato.');
 			}
 
 			function error(response) {
+				vm.btnEnviar = "Enviar";
 				toastr['error']('Ocorreu um erro ao enviar sua mensagem.');	
 			}
 
 			function success(response) {
+				vm.btnEnviar = "Enviar";
 				if (response.data.exec) {
 					toastr['success']('Sua mensagem foi enviada com sucesso.');	
 					delete vm.contato;
