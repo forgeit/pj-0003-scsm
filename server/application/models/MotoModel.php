@@ -249,4 +249,88 @@ class MotoModel extends MY_Model {
         }
 	}
 
+    function buscarTotalizadoresPorRevenda($revenda) {
+        $sql = "select 
+                    coalesce(sum(va.valor_venda - (va.valor_custos_compra_moto + va.valor_custos_mecanica + va.valor_custos_documentos + va.valor_custos_diversos)), 0) as lucro_anual,
+                    coalesce(sum(vm.valor_venda - (vm.valor_custos_compra_moto + vm.valor_custos_mecanica + vm.valor_custos_documentos + vm.valor_custos_diversos)), 0) as lucro_mensal,
+                    coalesce(sum(vs.valor_venda - (vs.valor_custos_compra_moto + vs.valor_custos_mecanica + vs.valor_custos_documentos + vs.valor_custos_diversos)), 0) as lucro_semanal,
+                    coalesce(sum((va.valor_custos_compra_moto + va.valor_custos_mecanica + va.valor_custos_documentos + va.valor_custos_diversos)), 0) as custo_anual,
+                    coalesce(sum((vm.valor_custos_compra_moto + vm.valor_custos_mecanica + vm.valor_custos_documentos + vm.valor_custos_diversos)), 0) as custo_mensal,
+                    coalesce(sum((vs.valor_custos_compra_moto + vs.valor_custos_mecanica + vs.valor_custos_documentos + vs.valor_custos_diversos)), 0) as custo_semanal,
+                    coalesce(sum(va.valor_venda), 0) as entrada_anual,
+                    coalesce(sum(vm.valor_venda), 0) as entrada_mensal,
+                    coalesce(sum(vs.valor_venda), 0) as entrada_semanal
+                from moto m
+                left join 
+                (
+                    select
+                    m.id,
+                    coalesce(valor_venda, 0) as valor_venda,
+                    coalesce(valor_custos_mecanica, 0) as valor_custos_mecanica,
+                    coalesce(valor_custos_compra_moto, 0) as valor_custos_compra_moto,
+                    coalesce(valor_custos_documentos, 0) as valor_custos_documentos,
+                    coalesce(valor_custos_diversos, 0) as valor_custos_diversos
+                    from moto m
+                    where 
+                    data_venda between ? and ?
+                    and id_revenda = ?
+                ) as va on va.id = m.id
+                left join 
+                (
+                    select
+                    m.id,
+                    coalesce(valor_venda, 0) as valor_venda,
+                    coalesce(valor_custos_mecanica, 0) as valor_custos_mecanica,
+                    coalesce(valor_custos_compra_moto, 0) as valor_custos_compra_moto,
+                    coalesce(valor_custos_documentos, 0) as valor_custos_documentos,
+                    coalesce(valor_custos_diversos, 0) as valor_custos_diversos
+                    from moto m
+                    where 
+                    data_venda between ? and ?
+                    and id_revenda = ?
+                ) as vm on vm.id = m.id
+                left join 
+                (
+                    select
+                    m.id,
+                    coalesce(valor_venda, 0) as valor_venda,
+                    coalesce(valor_custos_mecanica, 0) as valor_custos_mecanica,
+                    coalesce(valor_custos_compra_moto, 0) as valor_custos_compra_moto,
+                    coalesce(valor_custos_documentos, 0) as valor_custos_documentos,
+                    coalesce(valor_custos_diversos, 0) as valor_custos_diversos
+                    from moto m
+                    where 
+                    data_venda between ? and ?
+                    and id_revenda = ?
+                ) as vs on vs.id = m.id
+                where m.id_revenda = ?";
+
+        $ano = date('Y');
+        $mes = date('m');
+        $hoje = date('Y-m-d');
+        $daquiUmaSemana = date('Y-m-d', strtotime($hoje . ' + 7 days'));
+        $ultimoDiaMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
+
+        $parametros = array(
+            $ano . '-01-01' ,
+            $ano . '-12-31' ,
+            $revenda,
+            $ano . '-' . $mes . '-01',
+            $ano . '-' . $mes . '-' . $ultimoDiaMes,
+            $revenda,
+            $hoje,
+            $daquiUmaSemana,
+            $revenda,
+            $revenda
+        );
+
+        $query = $this->db->query($sql, $parametros);
+
+        if ($query->num_rows() > 0) {
+            return $query->row_array();
+        } else {
+            return null;
+        }
+    }
+
 }

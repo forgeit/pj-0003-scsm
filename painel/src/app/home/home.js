@@ -6,14 +6,15 @@
 		.module('painel.home')
 		.controller('Home', Home);
 
-	Home.$inject = ['mensagemDS', '$location'];
+	Home.$inject = ['mensagemDS', '$location', 'motoDS'];
 
-	function Home(mensagemDS, $location) {
+	function Home(mensagemDS, $location, motoDS) {
 		var vm = this;
 
 		vm.irPara = irPara;
 
 		buscarTotalContatoNaoLido();
+		buscarTotalizadores();
 
 		function buscarTotalContatoNaoLido() {
 			vm.totalNaoLido = "Buscando...";
@@ -31,6 +32,18 @@
 				}
 			}
 		}
+
+		function buscarTotalizadores() {
+			motoDS.buscarTotalizadores().then(success);
+
+			function success(response) {
+				if (response.data.exec) {
+					vm.totalizadores = response.data.data;
+					console.log(vm.totalizadores);
+				}
+			}
+		}
+
 
 		function irPara(ir) {
 			$location.path(ir);

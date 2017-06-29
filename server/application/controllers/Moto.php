@@ -1,7 +1,14 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Moto extends MY_Controller {
+
+	public function buscarTotalizadores() {
+		$retorno = $this->MotoModel->buscarTotalizadoresPorRevenda($this->revendaAtual);
+		$exec = count($retorno) > 0;
+		print_r($this->criarRetorno($exec, $retorno));
+	}
 
 	public function buscar() {
 		$retorno = $this->MotoModel->buscarRevendaNativo($this->uri->segment(3));

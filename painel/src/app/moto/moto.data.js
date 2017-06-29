@@ -13,13 +13,18 @@
 			listar: listar,
 			marcas: marcas,
 			remover: remover,
-			salvar: salvar
+			salvar: salvar,
+			buscarTotalizadores: buscarTotalizadores
 		};
 
 		return service;
 
 		function buscar(id) {
 			return $http.get(configuracaoREST.url + 'moto/buscar/' + id);
+		}
+
+		function buscarTotalizadores() {
+			return $http.get(configuracaoREST.url + 'moto/buscarTotalizadores');
 		}
 
 		function listar() {
