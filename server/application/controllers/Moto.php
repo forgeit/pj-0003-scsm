@@ -66,22 +66,17 @@ class Moto extends MY_Controller {
 
 	public function buscarSelecionada() {
 		$retorno = $this->MotoModel->buscarSelecionadaNativo($this->uri->segment(3));
+		$exec = count($retorno) > 0;
+		$this->registrarLog($this->uri->segment(3));
+		print_r($this->criarRetorno($exec, $retorno));
+	}
 
-
-		$log = array(
-			'id_moto' => $this->uri->segment(3),
-			'ts_visualizacao' => date('Y-m-d H:i:s.u'),
-			'ip' => $_SERVER['SERVER_ADDR']
-		);
-
+	public function registrarLog($moto) {
 		try {
+			$log = array( 'id_moto' => $moto, 'ts_visualizacao' => date('Y-m-d H:i:s'), 'ip' => $_SERVER['SERVER_ADDR']);
 			$this->LogVisualizacaoMotoModel->inserir($log);
 		} catch (Exception $ex) {
 		}
-		
-
-		$exec = count($retorno) > 0;
-		print_r($this->criarRetorno($exec, $retorno));
 	}
 
 	public function buscarSemelhantes() {
