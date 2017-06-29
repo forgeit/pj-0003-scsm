@@ -12,5 +12,4 @@ TODO PAINEL
 * Exibir mensagens no painel
 * Exibir valores de lucro mensal, anual e total no dashboard.
 * Exibir valores de venda mensal, anual e total no dashboard.
-* mascaras no cadastro de revenda 
 * imagem da revenda, otimizar.

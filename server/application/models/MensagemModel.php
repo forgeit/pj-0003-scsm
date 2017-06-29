@@ -6,6 +6,20 @@ class MensagemModel extends MY_Model {
 		$this->table = 'mensagem';
 	}
 
+    function buscarPorRevenda($revenda, $mensagem) {
+        $sql = "select m.*, mt.nome as nome_moto, mt.ano from mensagem m
+                join moto mt on mt.id = m.id_moto
+                where m.id_revenda = ? and m.id = ?";
+
+        $query = $this->db->query($sql, array($revenda, $mensagem));
+
+        if ($query->num_rows() > 0) {
+            return $query->row_array();
+        } else {
+            return null;
+        }
+    }
+
 	function buscarTotalNaoLidaPorRevendaNativo($revenda) {
         $sql = "select count(*) as total from mensagem
 				where id_revenda = ? and visualizado = 0";

@@ -73,6 +73,7 @@ class MY_Controller extends CI_Controller {
 		$rotas[] = 'moto/salvar';
 		$rotas[] = 'moto/buscar';
 		$rotas[] = 'mensagem/remover';
+		$rotas[] = 'mensagem/buscar';
 
 		return $rotas;
 

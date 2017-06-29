@@ -18,7 +18,7 @@
 		return service;
 
 		function buscar(id) {
-			return $http.get(configuracaoREST.url + 'mensagem/buscar/' + id);
+			return $http.post(configuracaoREST.url + 'mensagem/buscar/', {id: id});
 		}
 
 		function buscarTotalNaoLidaPorRevenda() {

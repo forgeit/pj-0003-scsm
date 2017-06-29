@@ -15,6 +15,12 @@
 				controller: 'Mensagem',
 				controllerAs: 'vm',
 				notSecured: true
+			})
+			.when('/ver-mensagem/:id', {
+				templateUrl: 'src/app/mensagem/mensagem-ver.html',
+				controller: 'MensagemVer',
+				controllerAs: 'vm',
+				notSecured: true
 			});
 	}
 

@@ -5,9 +5,9 @@
 		.module('painel.mensagem')
 		.controller('Mensagem', Mensagem);
 
-	Mensagem.$inject = ['mensagemDS', '$location', '$routeParams', 'tabela'];
+	Mensagem.$inject = ['mensagemDS', '$location', '$routeParams', 'tabela', '$scope'];
 
-	function Mensagem(mensagemDS, $location, $routeParams, tabela) {
+	function Mensagem(mensagemDS, $location, $routeParams, tabela, $scope) {
 		var vm = this;
 
 		vm.tabela = {};
@@ -19,14 +19,16 @@
 			criarOpcoesTabela();
 
 			function carregarObjeto(aData) {
-				controller.$location.path(vm.linkParaFormulario + aData.id);
+				$location.path('ver-mensagem/' + aData.id);
 				$scope.$apply();
 			}
 
 			function criarColunasTabela() {
 				vm.tabela.colunas = tabela.adicionarColunas([
 					{data: 'nome', title: 'Nome'},
-					{data: 'email', title: 'E-mail'},
+					{data: 'email', title: 'E-mail', renderWith: function (data) {
+						return data == null ? 'Não Informado' : data;
+					}},
 					{data: 'moto', name: 'nome_moto', title: 'Moto', renderWith: function (data, display, full) {
 						return '<a target="_" href="registrar-moto/' + full.id_moto + '">' + full.nome_moto + '/' + full.ano_moto + '</a>';
 					}},

@@ -28,6 +28,7 @@ class Mensagem extends MY_Controller {
 	}
 
 	public function remover() {
+		//buscar id revenda
 		$data = $this->security->xss_clean($this->input->raw_input_stream);
 		$mensagem = json_decode($data);
 		$retorno = $this->MensagemModel->excluir($mensagem->id);
@@ -36,6 +37,24 @@ class Mensagem extends MY_Controller {
 		} else {
 			print_r($this->criarRetorno(false, null, 'Erro ao remover.'));
 		}
+	}
+
+	public function buscar() {
+		$data = $this->security->xss_clean($this->input->raw_input_stream);
+		$mensagem = json_decode($data);
+		$retorno = $this->MensagemModel->buscarPorRevenda($this->revendaAtual, $mensagem->id);
+
+		if ($retorno['visualizado'] == 0) {
+			$msg = $this->MensagemModel->buscarPorId($mensagem->id);
+			$msg['visualizado']  = true;
+			$msg['ultima_visualizacao'] = date('Y-m-d H:i:s');
+		}
+
+
+		$this->MensagemModel->atualizar($mensagem->id, $msg);
+
+		$exec = count($retorno) > 0;
+		print_r($this->criarRetorno($exec, $retorno));
 	}
 
 	public function entrarEmContato() {
