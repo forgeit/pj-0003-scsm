@@ -48,10 +48,8 @@ class Mensagem extends MY_Controller {
 			$msg = $this->MensagemModel->buscarPorId($mensagem->id);
 			$msg['visualizado']  = true;
 			$msg['ultima_visualizacao'] = date('Y-m-d H:i:s');
+			$this->MensagemModel->atualizar($mensagem->id, $msg);
 		}
-
-
-		$this->MensagemModel->atualizar($mensagem->id, $msg);
 
 		$exec = count($retorno) > 0;
 		print_r($this->criarRetorno($exec, $retorno));

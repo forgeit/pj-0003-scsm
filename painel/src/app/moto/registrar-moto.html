@@ -55,17 +55,145 @@
 				</div>
 				<div class="col-md-2">
 					<label style="width: 100%;" for="img_aux_02" class="btn btn-primary">Escolher Imagem 02</label>
-				  	<input id="img_aux_02" type="file" ng-model="vm.moto.img_aux_02" base-sixty-four-input style="display: none;">
+					<input id="img_aux_02" type="file" ng-model="vm.moto.img_aux_02" base-sixty-four-input style="display: none;">
 				</div>
 				<div class="col-md-2">
 					<label style="width: 100%;" for="img_aux_03" class="btn btn-primary">Escolher Imagem 03</label>
-				  	<input id="img_aux_03" type="file" ng-model="vm.moto.img_aux_03" base-sixty-four-input style="display: none;">
+					<input id="img_aux_03" type="file" ng-model="vm.moto.img_aux_03" base-sixty-four-input style="display: none;">
 				</div>
 				<div class="col-md-2">
 					<label style="width: 100%;" for="img_aux_04" class="btn btn-primary">Escolher Imagem 04</label>
-				  	<input id="img_aux_04" type="file" ng-model="vm.moto.img_aux_04" base-sixty-four-input style="display: none;">
+					<input id="img_aux_04" type="file" ng-model="vm.moto.img_aux_04" base-sixty-four-input style="display: none;">
 				</div>
 			</div>
+
+			<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+				<div class="col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								Visualizador de Imagens
+							</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-2" ng-if="vm.moto.imagem.filetype">
+									<div class="thumbnail">
+										<img class="img-preview" ng-src="data:{{ vm.moto.imagem.filetype}};base64,{{ vm.moto.imagem.base64 }}">
+										<div class="caption">
+											<h4 class="text-center">Imagem Principal</h4>
+											<p>
+												<button type="button" class="btn btn-danger" style="width: 100%;" role="button" ng-click="vm.remover('imagem')">Remover</button>
+											</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-2" ng-if="vm.moto.img_aux_01.filetype">
+									<div class="thumbnail">
+										<img class="img-preview" ng-src="data:{{ vm.moto.img_aux_01.filetype}};base64,{{ vm.moto.img_aux_01.base64 }}">
+										<div class="caption">
+											<h4 class="text-center">Imagem 01</h4>
+											<p>
+												<button type="button" class="btn btn-danger" style="width: 100%;" role="button" ng-click="vm.remover('img_aux_01')">Remover</button>
+											</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-2" ng-if="vm.moto.img_aux_02.filetype">
+									<div class="thumbnail">
+										<img class="img-preview" ng-src="data:{{ vm.moto.img_aux_02.filetype}};base64,{{ vm.moto.img_aux_02.base64 }}">
+										<div class="caption">
+											<h4 class="text-center">Imagem 02</h4>
+											<p>
+												<button type="button" class="btn btn-danger" style="width: 100%;" role="button" ng-click="vm.remover('img_aux_02')">Remover</button>
+											</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-2" ng-if="vm.moto.img_aux_03.filetype">
+									<div class="thumbnail">
+										<img class="img-preview" ng-src="data:{{ vm.moto.img_aux_03.filetype}};base64,{{ vm.moto.img_aux_03.base64 }}">
+										<div class="caption">
+											<h4 class="text-center">Imagem 03</h4>
+											<p>
+												<button type="button" class="btn btn-danger" style="width: 100%;" role="button" ng-click="vm.remover('img_aux_03')">Remover</button>
+											</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-2" ng-if="vm.moto.img_aux_04.filetype">
+									<div class="thumbnail">
+										<img class="img-preview" ng-src="data:{{ vm.moto.img_aux_04.filetype}};base64,{{ vm.moto.img_aux_04.base64 }}">
+										<div class="caption">
+											<h4 class="text-center">Imagem 04</h4>
+											<p>
+												<button type="button" class="btn btn-danger" style="width: 100%;" role="button" ng-click="vm.remover('img_aux_04')">Remover</button>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+				<div class="col-md-12">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								Dados Referentes a Venda
+							</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-3">
+									<div class="form-group">
+										<label>Valor de Compra</label>
+										<input class="form-control" type="text" ui-money-mask="2" placeholder="Informe o valor de compra da moto" ng-model="vm.moto.valor_custos_compra_moto">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label>Custos com Mecânica</label>
+										<input class="form-control" type="text" ui-money-mask="2" placeholder="Informe os custos com mecânica" ng-model="vm.moto.valor_custos_mecanica">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label>Custos com Documentos</label>
+										<input class="form-control" type="text" ui-money-mask="2" placeholder="Informe os custos com documento" ng-model="vm.moto.valor_custos_documentos">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label>Custos Diversos</label>
+										<input class="form-control" type="text" ui-money-mask="2" placeholder="Informe os custos diversos" ng-model="vm.moto.valor_custos_diversos">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label>Valor de Venda</label>
+										<input class="form-control" type="text" ui-money-mask="2" placeholder="Informe o valor real de venda" ng-model="vm.moto.valor_venda">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label>Data de Venda</label>
+										<input class="form-control" type="text" ui-date-mask placeholder="Informe a data de venda" ng-model="vm.moto.data_venda">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
 				<div class="col-md-4">
 					<button type="submit" class="btn btn-primary" ng-disabled="formulario.$invalid" ng-hide="vm.moto.id">Salvar</button>
@@ -74,77 +202,5 @@
 				</div>
 			</div>
 		</form>
-
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">
-					Visualizador de Imagens
-				</h3>
-			</div>
-			<div class="panel-body">
-				<div class="row">
-					<div class="col-md-2" ng-if="vm.moto.imagem.filetype">
-						<div class="thumbnail">
-							<img class="img-preview" ng-src="data:{{ vm.moto.imagem.filetype}};base64,{{ vm.moto.imagem.base64 }}">
-							<div class="caption">
-								<h4 class="text-center">Imagem Principal</h4>
-								<p>
-									<button type="button" class="btn btn-danger" style="width: 100%;" role="button" ng-click="vm.remover('imagem')">Remover</button>
-								</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-2" ng-if="vm.moto.img_aux_01.filetype">
-						<div class="thumbnail">
-							<img class="img-preview" ng-src="data:{{ vm.moto.img_aux_01.filetype}};base64,{{ vm.moto.img_aux_01.base64 }}">
-							<div class="caption">
-								<h4 class="text-center">Imagem 01</h4>
-								<p>
-									<button type="button" class="btn btn-danger" style="width: 100%;" role="button" ng-click="vm.remover('img_aux_01')">Remover</button>
-								</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-2" ng-if="vm.moto.img_aux_02.filetype">
-						<div class="thumbnail">
-							<img class="img-preview" ng-src="data:{{ vm.moto.img_aux_02.filetype}};base64,{{ vm.moto.img_aux_02.base64 }}">
-							<div class="caption">
-								<h4 class="text-center">Imagem 02</h4>
-								<p>
-									<button type="button" class="btn btn-danger" style="width: 100%;" role="button" ng-click="vm.remover('img_aux_02')">Remover</button>
-								</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-2" ng-if="vm.moto.img_aux_03.filetype">
-						<div class="thumbnail">
-							<img class="img-preview" ng-src="data:{{ vm.moto.img_aux_03.filetype}};base64,{{ vm.moto.img_aux_03.base64 }}">
-							<div class="caption">
-								<h4 class="text-center">Imagem 03</h4>
-								<p>
-									<button type="button" class="btn btn-danger" style="width: 100%;" role="button" ng-click="vm.remover('img_aux_03')">Remover</button>
-								</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-2" ng-if="vm.moto.img_aux_04.filetype">
-						<div class="thumbnail">
-							<img class="img-preview" ng-src="data:{{ vm.moto.img_aux_04.filetype}};base64,{{ vm.moto.img_aux_04.base64 }}">
-							<div class="caption">
-								<h4 class="text-center">Imagem 04</h4>
-								<p>
-									<button type="button" class="btn btn-danger" style="width: 100%;" role="button" ng-click="vm.remover('img_aux_04')">Remover</button>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
 	</div>
 </div>

@@ -68,6 +68,13 @@ alter table moto add column img_aux_02 longtext;
 alter table moto add column img_aux_03 longtext;
 alter table moto add column img_aux_04 longtext;
 alter table moto add column data_cadastro date not null;
+alter table moto add column valor_venda numeric(9,2);
+alter table moto add column valor_custos_mecanica numeric(9,2);
+alter table moto add column valor_custos_compra_moto numeric(9,2);
+alter table moto add column valor_custos_documentos numeric(9,2);
+alter table moto add column valor_custos_diversos numeric(9,2);
+alter table moto add column data_venda date;
+
 
 
 
