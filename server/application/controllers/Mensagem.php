@@ -5,10 +5,20 @@ class Mensagem extends MY_Controller {
 
 	public function buscarTodosPorRevenda() {
 		$data = $this->security->xss_clean($this->input->raw_input_stream);
-		$paginacao = json_decode($data);
-		$retorno = $this->MensagemModel->buscarTodosRevendaNativo($this->revendaAtual, $paginacao);
+		$dadosTabela = json_decode($data);
+
+		$total = $this->MensagemModel->buscarTotalRevendaNativo($this->revendaAtual);
+		$retorno = $this->MensagemModel->buscarTodosRevendaNativo($this->revendaAtual, $dadosTabela);
 		$exec = count($retorno) > 0;
-		print_r($this->criarRetorno($exec, $retorno));
+
+		$array = array(
+			'draw' => $dadosTabela->draw,
+			'recordsTotal' => $total['total'],
+			'recordsFiltered' => $total['total'],
+			'data' => $retorno
+			);
+
+		print_r($this->criarRetorno($exec, $array));
 	}
 
 	public function buscarTotalNaoLidaPorRevenda() {

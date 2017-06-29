@@ -11,7 +11,7 @@
 	function routes($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/login', {
-				templateUrl: 'src/app/login/login.html?v=1?' + new Date().getTime(),
+				templateUrl: 'src/app/login/login.html?v=1',
 				controller: 'Login',
 				controllerAs: 'vm',
 				notSecured: true

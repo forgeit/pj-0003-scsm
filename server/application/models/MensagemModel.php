@@ -19,9 +19,10 @@ class MensagemModel extends MY_Model {
         }
 	}
 
-	function buscarTodosRevendaNativo($id, $paginacao) {
+	function buscarTodosRevendaNativo($id, $tabela) {
         $sql = "select 
                 msg.*, 
+                date_format(msg.ts_recebido, '%d/%m/%y %H:%i:%s') as data_hora_recebido,
                 case when msg.visualizado then 'Visualizado' else 'Não Visualizado' end as visualizado, 
                 m.nome as nome_moto,
                 m.ano as ano_moto
@@ -29,12 +30,32 @@ class MensagemModel extends MY_Model {
                 join moto m on m.id = msg.id_moto
                 where
                 msg.id_revenda = ?
-                order by msg.visualizado desc, msg.id desc";
+                order by " . $tabela->columns[$tabela->order[0]->column]->name . " " .  $tabela->order[0]->dir . 
+                " limit ? offset ?";
+
+        $query = $this->db->query($sql, array(
+                $id, 
+                $tabela->length, 
+                $tabela->start));
+
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        } else {
+            return null;
+        }
+    }
+
+    function buscarTotalRevendaNativo($id) {
+        $sql = "select 
+                count(*) as total
+                from mensagem msg 
+                where
+                msg.id_revenda = ?";
 
         $query = $this->db->query($sql, array($id));
 
         if ($query->num_rows() > 0) {
-            return $query->result_array();
+            return $query->row_array();
         } else {
             return null;
         }

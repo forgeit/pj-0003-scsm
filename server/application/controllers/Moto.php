@@ -66,6 +66,20 @@ class Moto extends MY_Controller {
 
 	public function buscarSelecionada() {
 		$retorno = $this->MotoModel->buscarSelecionadaNativo($this->uri->segment(3));
+
+
+		$log = array(
+			'id_moto' => $this->uri->segment(3),
+			'ts_visualizacao' => date('Y-m-d H:i:s.u'),
+			'ip' => $_SERVER['SERVER_ADDR']
+		);
+
+		try {
+			$this->LogVisualizacaoMotoModel->inserir($log);
+		} catch (Exception $ex) {
+		}
+		
+
 		$exec = count($retorno) > 0;
 		print_r($this->criarRetorno($exec, $retorno));
 	}
@@ -120,22 +134,27 @@ class Moto extends MY_Controller {
 
 			if (!$this->validarTipoImagem($moto->imagem)) {
 				print_r($this->criarRetorno(false, null, 'Imagem principal é inválida'));
+				die();
 			}
 
 			if (isset($moto->img_aux_01) && $moto->img_aux_01 && !$this->validarTipoImagem($moto->img_aux_01)) {
 				print_r($this->criarRetorno(false, null, 'Imagem 01 é inválida'));
+				die();
 			}
 
 			if (isset($moto->img_aux_02) && !$this->validarTipoImagem($moto->img_aux_02)) {
 				print_r($this->criarRetorno(false, null, 'Imagem 02 é inválida'));
+				die();
 			}
 
 			if (isset($moto->img_aux_03) &&  !$this->validarTipoImagem($moto->img_aux_03)) {
 				print_r($this->criarRetorno(false, null, 'Imagem 03 é inválida'));
+				die();
 			}
 
 			if (isset($moto->img_aux_04) &&  !$this->validarTipoImagem($moto->img_aux_04)) {
 				print_r($this->criarRetorno(false, null, 'Imagem 04 é inválida'));
+				die();
 			}
 
 			$moto->imagem_home = $this->criarStringArquivo($moto->imagem, 150, 100);

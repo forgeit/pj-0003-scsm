@@ -9,7 +9,6 @@ TODO SITE PÚBLICO
 TODO PAINEL
 
 * Adicionar valores ao formulário da moto. (Valor de Venda, Custos com Mecânica, Compra da Moto, Documentos, Outros)
-* Remover imagens ao editar e cadastrar motos
 * Exibir mensagens no painel
 * Exibir valores de lucro mensal, anual e total no dashboard.
 * Exibir valores de venda mensal, anual e total no dashboard.

@@ -136,5 +136,6 @@ $autoload['model'] = array(
 	'MarcaModel',
 	'RevendaModel',
 	'MotoModel',
-	'MensagemModel'
+	'MensagemModel',
+	'LogVisualizacaoMotoModel'
 );

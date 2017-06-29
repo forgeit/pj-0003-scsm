@@ -7,40 +7,7 @@
 	<div class="panel-body">
 		<div class="row" style="padding-top: 5px;">
 			<div class="col-md-12">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th style="width: 15%">Remetente</th>
-							<th style="width: 15%">Moto</th>
-							<th style="width: 35%">Texto</th>
-							<th style="width: 15%">Situação</th>
-							<th style="width: 15%" class="text-center">Ações</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="mensagem in vm.mensagemList" ng-if="vm.mensagemList.length > 0">
-							<td>{{ mensagem.nome }}</td>
-							<td><a href="registrar-moto/{{ mensagem.id_moto }}">{{ mensagem.nome_moto }}/{{ mensagem.ano_moto }}</a></td>
-							<td>{{ mensagem.texto }}</td>
-							<td>{{ mensagem.visualizado }}</td>
-							<td class="text-center">
-								<a href="mensagem/{{ mensagem.id }}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
-								<a href="mensagem/{{ mensagem.id }}" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span></a>
-							</td>
-						</tr>
-						<tr ng-if="vm.mensagemList.length == 0">
-							<td class="text-center" colspan="5">Não possui registros.</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="col-md-12 text-rigth">
-				<nav>
-				  <ul class="pager" style="text-align: right !important;">
-				    <li ng-click="vm.anterior()"><a href="#">Anterior</a></li>
-				    <li ng-click="vm.proxima()"><a href="#">Próxima</a></li>
-				  </ul>
-				</nav>
+				<lista></lista>
 			</div>
 		</div>
 	</div>

@@ -25,8 +25,8 @@
 			return $http.get(configuracaoREST.url + 'mensagem/buscarTotalNaoLidaPorRevenda');
 		}
 
-		function listar(paginacao) {
-			return $http.get(configuracaoREST.url + 'mensagem/buscarTodosPorRevenda');
+		function listar(data) {
+			return $http.post(configuracaoREST.url + 'mensagem/buscarTodosPorRevenda', data);
 		}
 
 		function remover(id) {

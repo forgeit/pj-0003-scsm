@@ -3,6 +3,8 @@
 	'use strict';
 
 	angular.module('painel.core', [
+		'datatables', 
+		'datatables.bootstrap', 
 		'ngRoute', 
 		'angular-loading-bar',
 		'angular-jwt',
@@ -10,7 +12,6 @@
 		'naif.base64',
 		'ui.utils.masks',
 		'ngStorage',
-		'core.auth',
-		'datatables.bootstrap']);
+		'core.auth']);
 
 })();

@@ -99,3 +99,12 @@ create table mensagem
 
 alter table mensagem add column ts_recebido datetime;
 alter table mensagem add column ultima_visualizacao datetime;
+
+create table log_visualizacao_moto 
+(
+	id int primary key auto_increment,
+	ts_visualizacao datetime not null,
+	id_moto int not null,
+	ip varchar(50) not null,
+	foreign key (id_moto) references moto (id)
+);
