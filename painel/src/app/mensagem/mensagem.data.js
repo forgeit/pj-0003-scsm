@@ -30,7 +30,7 @@
 		}
 
 		function remover(id) {
-			return $http.get(configuracaoREST.url + 'mensagem/remover/' + id);
+			return $http.post(configuracaoREST.url + 'mensagem/remover/', {id: id});
 		}
 	}
 })();

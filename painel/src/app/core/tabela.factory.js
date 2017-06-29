@@ -84,7 +84,7 @@
 		}
 
 		function criarBotaoPadrao() { 
-			return '<div class="text-center"><btn-editar class="editar"></btn-editar>&nbsp;<btn-remover class="remover"></btn-remover></div>';
+			return '<div class="text-center"><btn-editar class="editar" style="cursor: pointer;"></btn-editar>&nbsp;<btn-remover style="cursor: pointer;" class="remover"></btn-remover></div>';
 		}
 
 		function criarColunas(colunas) {

@@ -14,4 +14,3 @@ TODO PAINEL
 * Exibir valores de venda mensal, anual e total no dashboard.
 * mascaras no cadastro de revenda 
 * imagem da revenda, otimizar.
-* Log de visitas na moto

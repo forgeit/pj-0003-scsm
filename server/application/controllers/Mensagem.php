@@ -27,6 +27,17 @@ class Mensagem extends MY_Controller {
 		print_r($this->criarRetorno($exec, $retorno));
 	}
 
+	public function remover() {
+		$data = $this->security->xss_clean($this->input->raw_input_stream);
+		$mensagem = json_decode($data);
+		$retorno = $this->MensagemModel->excluir($mensagem->id);
+		if ($retorno) {
+			print_r($this->criarRetorno(true, null, 'Sucesso ao remover.'));
+		} else {
+			print_r($this->criarRetorno(false, null, 'Erro ao remover.'));
+		}
+	}
+
 	public function entrarEmContato() {
 		$data = $this->security->xss_clean($this->input->raw_input_stream);
 		$mensagem = json_decode($data);

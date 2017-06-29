@@ -41,11 +41,7 @@
 				criarColunasTabela();
 
 				function ajax(data, callback, settings) {
-					mensagemDS.listar(data).then(success).catch(error);
-
-					function error(response) {
-						console.log(response);
-					}
+					mensagemDS.listar(data).then(success);
 
 					function success(response) {
 						callback(response.data.data);
@@ -54,15 +50,19 @@
 			}
 
 			function remover(aData) {
-				dataservice.remover(aData.id).then(success).catch(error);
+				mensagemDS.remover(aData.id).then(success).catch(error);
 
 				function error(response) {
-					controller.feed(msg.MG013);				}
+					console.log(response);
+					toastr['error']('Ocorreu um erro ao remover.');
+				}
 
 				function success(response) {
-					controller.feedMessage(response);
-					if (response.data.status == 'true') {
+					if (response.data.exec) {
+						toastr['success']('Sucesso ao remover.');
 						tabela.recarregarDados(vm.instancia);
+					} else {
+						toastr['error']('Ocorreu um erro ao remover.');						
 					}
 				}
 			}
