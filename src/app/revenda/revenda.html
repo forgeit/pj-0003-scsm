@@ -1,0 +1,36 @@
+<div class="features_items" ng-if="vm.carregando">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<h1 style="color: #FE980F;">Carregando...</h1>
+		</div>
+		<div class="col-md-12 text-center">
+			<img src="images/loading.gif?v=1" style="width: 50px; height: 50px;">
+		</div>
+	</div>
+</div>
+
+<div class="features_items" ng-if="vm.revendas.length > 0 && !vm.carregando">
+	<h2 class="title text-center">Revendas</h2>
+
+	<div class="row" ng-repeat="revenda in vm.revendas">
+		<div class="col-md-12" style="padding-left: 5%; padding-right: 5%;" >
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{ revenda.nome }}</h3>
+				</div>
+				<div class="panel-body">
+					<div class="media">
+						<div class="media-left media-middle">
+							<a href="#">
+							<img class="media-object" src="{{ revenda.imagem }}" alt="{{ revenda.nome }}" style="width: auto; height: 150px;">
+							</a>
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">Teste</h4>
+						</div>
+					</div>
+			  	</div>
+			</div>
+		</div>
+	</div>
+</div>

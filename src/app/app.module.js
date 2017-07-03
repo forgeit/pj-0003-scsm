@@ -4,6 +4,7 @@
 
 	angular.module('app', [
 		'app.layout', 
+		'app.revenda',
 		'app.auth', 
 		'app.home', 
 		'app.carrinho', 

@@ -55,6 +55,12 @@ class Revenda extends MY_Controller {
 
 	}
 
+	public function listar() {
+		$retorno = $this->RevendaModel->buscarTodos('nome');
+		$exec = count($retorno) > 0;
+		print_r($this->criarRetorno($exec, $retorno));		
+	}
+
 	private function validarTipoImagem($imagem) {
 		if ($imagem) {
 			return $imagem->filetype === 'image/jpeg' || $imagem->filetype === 'image/jpg' || $imagem->filetype === 'image/png';

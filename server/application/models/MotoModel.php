@@ -159,86 +159,108 @@ class MotoModel extends MY_Model {
     }
 
 	function buscarTodosNativo($filtros) {
-		$sql = "select 
-                m.id as id,
-                m.nome as nome,
-                m.imagem_home as imagem,
-                r.nome as revenda,
-                ma.nome as marca,
-                m.ano,
-                m.valor,
-                m.observacoes
-                from moto m
-                join marca ma on ma.id = m.id_marca
-                join revenda r on r.id = m.id_revenda ";
-
         if (isset($filtros->anoInicial) ||
             isset($filtros->anoFinal) ||
             isset($filtros->marca) || 
             isset($filtros->revenda) ||
             isset($filtros->valorMin) ||
-            isset($filtros->valorMax)
+            isset($filtros->valorMax) || 
+            isset($filtros->query) ||
+            isset($filtros->paginacao)
             ) {
+            $sql = "select 
+                    m.id as id,
+                    m.nome as nome,
+                    m.imagem_home as imagem,
+                    m.ano,
+                    m.valor
+                    from moto m
+                    join marca ma on ma.id = m.id_marca
+                    join revenda r on r.id = m.id_revenda ";
 
             $sql .= " WHERE ";
+            $sql .= " m.data_venda is NULL ";
+
             $params = array();
 
             if (isset($filtros->anoInicial) && isset($filtros->anoFinal)) {
-                $sql .= " m.ano >= ? AND m.ano <= ? ";
+                $sql .= " AND m.ano >= ? AND m.ano <= ? ";
                 $params[] = $filtros->anoInicial;
                 $params[] = $filtros->anoFinal;
             } else if (isset($filtros->anoInicial)) {
-                $sql .= " m.ano >= ? ";
+                $sql .= " AND m.ano >= ? ";
                 $params[] = $filtros->anoInicial;
             } else if (isset($filtros->anoFinal)) {
-                $sql .= " m.ano <= ? ";
+                $sql .= " AND m.ano <= ? ";
                 $params[] = $filtros->anoFinal;
             }
 
             if (isset($filtros->marca)) {
-                if (count($params) > 0) {
-                    $sql .= " AND ";
-                }
-
-                $sql .= " m.id_marca = ? ";
+                $sql .= " AND m.id_marca = ? ";
                 $params[] = $filtros->marca;
             }
 
             if (isset($filtros->revenda)) {
-                if (count($params) > 0) {
-                    $sql .= " AND ";
-                }
-
-                $sql .= " m.id_revenda = ? ";
+                $sql .= " AND m.id_revenda = ? ";
                 $params[] = $filtros->revenda;
             }
 
             if (isset($filtros->valorMin) && isset($filtros->valorMax)) {
-                if (count($params) > 0) {
-                    $sql .= " AND ";
-                }
-
-                $sql .= " m.valor >= ? AND m.valor <= ? ";
+                $sql .= " AND m.valor >= ? AND m.valor <= ? ";
                 $params[] = $filtros->valorMin;
                 $params[] = $filtros->valorMax;
             } else if (isset($filtros->valorMin)) {
-                if (count($params) > 0) {
-                    $sql .= " AND ";
-                }
-
-                $sql .= " m.valor >= ? ";
+                $sql .= " AND m.valor >= ? ";
                 $params[] = $filtros->valorMin;
             } else if (isset($filtros->valorMax)) {
-                if (count($params) > 0) {
-                    $sql .= " AND ";
-                }
-
-                $sql .= " m.valor <= ? ";
+                $sql .= " AND m.valor <= ? ";
                 $params[] = $filtros->valorMax;
+            }
+
+            if (isset($filtros->query)) {
+                $arrayParametros = explode(" ", $filtros->query);
+
+                foreach ($arrayParametros as $key => $value) {
+                    $sql .= " OR (
+                                lower(ma.nome) like '%" . $value . "%'
+                                or 
+                                lower(m.nome) like '%" . $value . "%'
+                                or 
+                                lower(r.nome) like '%" . $value . "%'
+                                or 
+                                CONVERT(m.ano, CHAR(50)) like '%" . $value . "%'
+                            )";
+                }
+            }
+
+            $sql .= " ORDER BY m.id DESC LIMIT 12";
+
+            if (isset($filtros->paginacao)) {
+                $sql .= " OFFSET ? ";
+
+                $params[] = $filtros->paginacao->pagina * 3;
             }
 
             $query = $this->db->query($sql, $params);
         } else {
+            $sql = "select 
+                        m.id,
+                        m.nome,
+                        m.valor,
+                        m.imagem_home as imagem,
+                        m.ano,
+                        coalesce(r.id_revenda, 10000) as id_revenda
+                    from moto m 
+                    left join (
+                    select 
+                        m.id_revenda,
+                        max(m.id) as id_moto
+                    from moto m 
+                    group by m.id_revenda
+                    ) r on r.id_moto = m.id
+                    where data_venda is null
+                    order by id_revenda";        
+
             $query = $this->db->query($sql);
         }
 
