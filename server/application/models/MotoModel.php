@@ -259,7 +259,8 @@ class MotoModel extends MY_Model {
                     group by m.id_revenda
                     ) r on r.id_moto = m.id
                     where data_venda is null
-                    order by id_revenda";        
+                    order by id_revenda 
+                    limit 12";        
 
             $query = $this->db->query($sql);
         }
