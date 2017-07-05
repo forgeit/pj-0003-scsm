@@ -13,7 +13,6 @@
 		
 		vm.motos = [];
 
-
 		buscarTodos();
 
 		function buscarTodos() {

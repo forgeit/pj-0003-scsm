@@ -51,6 +51,22 @@
 					]
 				}
 			})
+			.when('/pagina/:id', {
+				templateUrl: 'src/app/home/home.html?v=3',
+				controller: 'Home',
+				controllerAs: 'vm',
+				titulo: 'Página Inicial',
+				cabecalho: {
+					h1: 'Página Inicial',
+					breadcrumbs: [
+						{
+							nome: 'Página Inicial',
+							link: '/',
+							ativo: true
+						}
+					]
+				}
+			})
 			.otherwise({
 				redirectTo: '/'
 			});

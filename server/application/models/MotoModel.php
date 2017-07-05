@@ -1,6 +1,9 @@
 <?php
 
 class MotoModel extends MY_Model {
+
+    private $MAX_POR_PAGINA = 9;
+
 	function __construct() {
 		parent::__construct();
 		$this->table = 'moto';
@@ -158,7 +161,7 @@ class MotoModel extends MY_Model {
         }
     }
 
-	function buscarTodosNativo($filtros) {
+	function buscarTodosNativo($filtros, $pagina = 0, $max = 6) {
         if (isset($filtros->anoInicial) ||
             isset($filtros->anoFinal) ||
             isset($filtros->marca) || 
@@ -166,7 +169,7 @@ class MotoModel extends MY_Model {
             isset($filtros->valorMin) ||
             isset($filtros->valorMax) || 
             isset($filtros->query) ||
-            isset($filtros->paginacao)
+            $pagina !== 0
             ) {
             $sql = "select 
                     m.id as id,
@@ -220,8 +223,19 @@ class MotoModel extends MY_Model {
             if (isset($filtros->query)) {
                 $arrayParametros = explode(" ", $filtros->query);
 
+                $sql .= ' AND ';
+
+                $i = 0;
+
                 foreach ($arrayParametros as $key => $value) {
-                    $sql .= " OR (
+
+                    if ($i > 0) {
+                        $sql .= ' OR ';
+                    }
+
+                    $i++;
+
+                    $sql .= " (
                                 lower(ma.nome) like '%" . $value . "%'
                                 or 
                                 lower(m.nome) like '%" . $value . "%'
@@ -233,13 +247,11 @@ class MotoModel extends MY_Model {
                 }
             }
 
-            $sql .= " ORDER BY m.id DESC LIMIT 12";
+            $sql .= " ORDER BY m.id DESC LIMIT " . $max;
 
-            if (isset($filtros->paginacao)) {
-                $sql .= " OFFSET ? ";
-
-                $params[] = $filtros->paginacao->pagina * 3;
-            }
+            
+            $sql .= " OFFSET ? ";
+            $params[] = $pagina * $max;
 
             $query = $this->db->query($sql, $params);
         } else {
@@ -260,7 +272,7 @@ class MotoModel extends MY_Model {
                     ) r on r.id_moto = m.id
                     where data_venda is null
                     order by id_revenda 
-                    limit 12";        
+                    limit " . $max;
 
             $query = $this->db->query($sql);
         }

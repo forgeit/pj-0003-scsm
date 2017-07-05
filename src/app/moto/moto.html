@@ -17,46 +17,22 @@
 				<div class="single-products">
 					<div class="productinfo text-center">
 						<img ng-src="{{ moto.imagem }}" alt="" style="width: auto; height: 120px;" />
-						<h4 style="color: #FE980F;"> {{ moto.nome }}/{{moto.ano}}</h4>
-						<p ng-show="moto.valor > 0"><b>{{ moto.valor | currency }}</b></p>
+						<h4 style="color: #FE980F;"> {{ moto.nome }}</h4>
+						<p ng-show="moto.valor > 0"><b>{{ moto.valor | currency }}</b>/<b>Ano: {{ moto.ano }}</b></p>
 						<p ng-show="moto.valor == 0"><b>Consultar</b></p>
 					</div>
 				</div>
 			</div>
 		</div>	
 	</div>
-	
-
-	<!-- <div class="col-sm-12" >
-		<div class="product-image-wrapper">
-			<div class="single-products">
-				<div class="productinfo text-center">
-					<a href="index.html" class="btn-limpar-filtros">Limpar Filtros</a>
-				</div>
-			</div>
-		</div>
-	</div> -->
 </div>
 
-<!-- <div class="features_items" ng-if="vm.produtos.length == 0">
-	<h2 class="title text-center">Produtos</h2>
-	<div class="col-sm-12" >
-		<div class="product-image-wrapper">
-			<div class="single-products">
-				<div class="productinfo text-center">
-					Não possui produtos para a categoria filtrada.
-				</div>
-			</div>
-		</div>
+<div class="row" style="padding-top: 5px; padding-bottom: 10px;" ng-show="!vm.carregando">
+	<div class="col-md-6 text-left">
+		<a ng-show="vm.anterior == 0" href="index.html" class="btn btn-default" >Anterior</a>
+		<a ng-show="vm.anterior > 0" href="pagina/{{ vm.anterior }}" class="btn btn-default" >Anterior</a>
 	</div>
-
-	<div class="col-sm-12" >
-		<div class="product-image-wrapper">
-			<div class="single-products">
-				<div class="productinfo text-center">
-					<a href="index.html" class="btn-limpar-filtros">Limpar Filtros</a>
-				</div>
-			</div>
-		</div>
+	<div class="col-md-6 text-right">
+		<a ng-show="vm.proxima" href="pagina/{{ vm.proxima}}" class="btn btn-default" >Próximo</a>
 	</div>
-</div> -->
+</div>

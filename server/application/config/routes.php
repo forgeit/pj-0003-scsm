@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['moto/buscar/(:id)'] = 'moto/buscar/$1';
 $route['moto/remover/(:id)'] = 'moto/remover/$1';
+$route['moto/buscarTodos/(:num)'] = 'moto/buscarTodos/$1';

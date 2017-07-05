@@ -22,6 +22,8 @@
 		vm.marcas   = [CARREGANDO];
 		vm.revendas = [CARREGANDO];
 
+		vm.proxima = 1;
+
 		buscarAnos();
 		buscarMarcas();
 		buscarMotos();
@@ -55,7 +57,7 @@
 
 		function buscarMotos() {
 			vm.carregando = true;
-			motoDS.listar().then(success).catch(error);
+			motoDS.listar($routeParams.id).then(success).catch(error);
 
 			function error(response) {
 				vm.carregando = false;
@@ -66,6 +68,18 @@
 				vm.carregando = false;
 				if (response.data.exec) {
 					vm.motos = response.data.data;
+
+					if ($routeParams.id) {
+						if (response.data.data.length == 6) {
+							vm.proxima = parseInt($routeParams.id) + 1;
+						} else {
+							delete vm.proxima;
+						}
+					}
+
+					if ($routeParams.id) {
+						vm.anterior = $routeParams.id - 1;
+					} 
 				} else {
 					vm.motos = [];
 				}

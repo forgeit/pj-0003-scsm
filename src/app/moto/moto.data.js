@@ -44,8 +44,8 @@
 			return $http.post(configuracaoREST.url + 'moto/buscarTodos', filtros);
 		}
 
-		function listar() {
-			return $http.get(configuracaoREST.url + 'moto/buscarTodos');
+		function listar(pagina) {
+			return $http.get(configuracaoREST.url + 'moto/buscarTodos' + (pagina ? '/' + pagina : ''));
 		}
 	}
 })();
