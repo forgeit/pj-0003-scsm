@@ -71,8 +71,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
-$active_group = $_SERVER['SERVER_NAME'] === 'localhost' ? 'default' : 'default';
-// $active_group = $_SERVER['SERVER_NAME'] === 'localhost' ? 'local' : 'default';
+// $active_group = $_SERVER['SERVER_NAME'] === 'localhost' ? 'default' : 'default';
+$active_group = $_SERVER['SERVER_NAME'] === 'localhost' ? 'local' : 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
